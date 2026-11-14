@@ -1,0 +1,1778 @@
+{
+  "schemaVersion": 1,
+  "title": "Ground News",
+  "subject": {
+    "name": "Ground News",
+    "kind": "company",
+    "url": "https://ground.news"
+  },
+  "tagline": "A transparency product, audited claim by claim: its methodology page is mostly honest — and its FAQ, sales page and mission page argue with it.",
+  "root": "ground-news",
+  "credit": "An independent StoryTeller study by Claim Checker / TeamBotics, built from the Claim Checker audit of Ground News (13 November 2026) and the public sources it cites.",
+  "disclaimer": "Built from Ground News's public pages and independent public records, each logged in research.md. Not affiliated with or endorsed by Ground News or Snapwise Inc. Claims the sources state differently are shown standing side by side, not resolved. Verdicts are Claim Checker's evidence assessments (see the Audit cluster), stated with their limits; the DNIC item is an unresolved lead, not a finding.",
+  "generated": {
+    "date": "2026-11-13",
+    "by": "Muse, for Claim Checker / TeamBotics"
+  },
+  "clusters": [
+    {
+      "id": "promise",
+      "label": "The Promise"
+    },
+    {
+      "id": "method",
+      "label": "The Method"
+    },
+    {
+      "id": "contradictions",
+      "label": "The Contradictions"
+    },
+    {
+      "id": "money",
+      "label": "The Money"
+    },
+    {
+      "id": "company",
+      "label": "The Company"
+    },
+    {
+      "id": "audit",
+      "label": "The Audit"
+    }
+  ],
+  "sources": [
+    {
+      "id": "gn-home",
+      "title": "Ground News — homepage",
+      "url": "https://ground.news/",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-about",
+      "title": "Ground News — About",
+      "url": "https://ground.news/about",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-mission",
+      "title": "Ground News — Mission",
+      "url": "https://ground.news/mission",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-rating",
+      "title": "Ground News — Rating System (methodology)",
+      "url": "https://ground.news/rating-system",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-faq",
+      "title": "Ground News — Frequently Asked Questions",
+      "url": "https://ground.news/frequently-asked-questions",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-subscribe",
+      "title": "Ground News — Subscribe",
+      "url": "https://ground.news/subscribe",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-history",
+      "title": "Ground News — History, 2018",
+      "url": "https://ground.news/history/2018",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "gn-blindspot",
+      "title": "Ground News — Blindspot feed",
+      "url": "https://ground.news/blindspot",
+      "publisher": "Ground News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "allsides",
+      "title": "AllSides — Media Bias Chart and FAQ",
+      "url": "https://www.allsides.com/media-bias/media-bias-chart",
+      "publisher": "AllSides",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "adfontes",
+      "title": "Ad Fontes Media — Methodology",
+      "url": "https://adfontesmedia.com/methodology/",
+      "publisher": "Ad Fontes Media",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "mbfc",
+      "title": "Media Bias/Fact Check — Methodology",
+      "url": "https://mediabiasfactcheck.com/methodology/",
+      "publisher": "Media Bias/Fact Check",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "cjr",
+      "title": "“The Business of Balance” — Columbia Journalism Review, Sep 2025",
+      "url": "https://www.cjr.org/analysis/the-business-of-balance-ground-news.php",
+      "publisher": "Columbia Journalism Review",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "corp-canada",
+      "title": "Corporations Canada — Snapwise Inc., Corp. No. 883500-4",
+      "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=8835004",
+      "publisher": "Corporations Canada / ISED",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "pitchbook",
+      "title": "PitchBook — Ground News company profile",
+      "url": "https://pitchbook.com/profiles/company/340782-22",
+      "publisher": "PitchBook",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "cbinsights",
+      "title": "CB Insights — Ground News company profile",
+      "url": "https://www.cbinsights.com/company/ground-1",
+      "publisher": "CB Insights",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "tracxn",
+      "title": "Tracxn — Ground News company profile",
+      "url": "https://tracxn.com/d/companies/ground/__HoPNp-FNqJJq2NTYGg_UHbTM6GR6Tkb5t6pxCWGlAmo",
+      "publisher": "Tracxn",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "rightside",
+      "title": "Right Side Capital Management — By the Numbers",
+      "url": "https://www.rightsidecapital.com/by-the-numbers",
+      "publisher": "Right Side Capital Management",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "uw-velocity",
+      "title": "University of Waterloo — Velocity Fund II closes financing round",
+      "url": "https://uwaterloo.ca/news/media/velocity-fund-ii-closes-financing-round",
+      "publisher": "University of Waterloo",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "uw-2017",
+      "title": "University of Waterloo — Combatting misinformation",
+      "url": "http://uwaterloo.ca/news/combatting-misinformation",
+      "publisher": "University of Waterloo",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "play-store",
+      "title": "Google Play — Ground News (Snapwise Inc. dba Ground News)",
+      "url": "https://play.google.com/store/apps/details?id=com.checkitt",
+      "publisher": "Google Play",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "apple-store",
+      "title": "Apple App Store — Ground News (Snapwise Inc.)",
+      "url": "https://apps.apple.com/us/app/ground-news/id1324203419",
+      "publisher": "Apple App Store",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "plosone",
+      "title": "Bram (2024) — Blindspot experiment, PLOS ONE 19(2)",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0297808",
+      "publisher": "PLOS ONE",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "tubefilter",
+      "title": "Tubefilter — Gospel Stats YouTube Sponsorship Landscape Report, H1 2025",
+      "url": "https://www.tubefilter.com/2025/10/22/gospel-stats-youtube-sponsorship-landscape-report/",
+      "publisher": "Tubefilter",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "malone",
+      "title": "“Ground News and the Factuality Scam” — Malone News, 22 Aug 2026",
+      "url": "https://www.malone.news/p/ground-news-and-the-factuality-scam",
+      "publisher": "Malone News",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "carleton",
+      "title": "Guida — Facts & Frictions, Fall 2021 (Digital News Innovation Challenge)",
+      "url": "https://ojs.library.carleton.ca/index.php/ff/issue/download/331/173",
+      "publisher": "Carleton University",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "story-exchange",
+      "title": "The Story Exchange — profile of Harleen Kaur, 10 Jan 2017",
+      "url": "https://thestoryexchange.org/woman-reaching-startup-stars/",
+      "publisher": "The Story Exchange",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "mediavillage",
+      "title": "MediaVillage — Harleen Kaur on addressing media bias, 18 Feb 2020",
+      "url": "https://www.mediavillage.com/article/ground-news-founder-harleen-kaur-on-addressing-media-bias/amp/",
+      "publisher": "MediaVillage",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "producthunt",
+      "title": "Product Hunt — Ground News Pro launch post, Jan 2020",
+      "url": "https://www.producthunt.com/p/ground-news-from-the-source/ground-news-pro",
+      "publisher": "Product Hunt (Ground News post)",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "trustpilot",
+      "title": "Trustpilot — Ground News company profile and reviews",
+      "url": "https://nz.trustpilot.com/review/ground.news",
+      "publisher": "Trustpilot",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "opportunity-ed",
+      "title": "Opportunity Education — About (leadership)",
+      "url": "https://opportunityeducation.org/us/about/",
+      "publisher": "Opportunity Education",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "literatemachine",
+      "title": "Literate Machine — “Is Ground News a Right-Wing Psy-Op?”, 16 Aug 2026",
+      "url": "https://literatemachine.com/2026/08/16/is-ground-news-a-right-wing-psy-op/",
+      "publisher": "Literate Machine",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "cc-standard",
+      "title": "The Claim Checker Standard",
+      "url": "https://github.com/nickhilster/claim-checker/blob/main/docs/STANDARD.md",
+      "publisher": "Claim Checker / TeamBotics",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "cc-record",
+      "title": "Claim Checker audit of Ground News — 16 atoms, seven tests, validator errata (13 Nov 2026)",
+      "url": "https://github.com/nickhilster/claim-checker",
+      "publisher": "Claim Checker / TeamBotics",
+      "accessed": "2026-11-13"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "ground-news",
+      "title": "Ground News",
+      "type": "company",
+      "cluster": "company",
+      "featured": true,
+      "summary": "A Kitchener, Ontario news-comparison platform that groups coverage of the same story from across the political spectrum and labels each source by bias, factuality and ownership. It is operated by Snapwise Inc. — the store listings say so in as many words.",
+      "evidence": "Google Play developer: “Snapwise Inc.(dba Ground News)”, Kitchener, Ontario",
+      "when": "Kitchener, Ontario, Canada",
+      "sources": [
+        "play-store",
+        "corp-canada"
+      ],
+      "themes": [
+        "subject"
+      ]
+    },
+    {
+      "id": "slogan",
+      "title": "See Every Side",
+      "type": "claim",
+      "cluster": "promise",
+      "featured": true,
+      "summary": "The homepage slogan is the whole pitch in seven words: not one version of a story, but every side of it. The audit's question was how literally a reader may take it — Ground's own methodology concedes some sources carry no rating and are not shown in its Bias Bar.",
+      "evidence": "“See every side of every news story” — Ground News homepage",
+      "sources": [
+        "gn-home",
+        "gn-rating"
+      ],
+      "themes": [
+        "promise"
+      ]
+    },
+    {
+      "id": "mission-think-freely",
+      "title": "Think Freely",
+      "type": "concept",
+      "cluster": "promise",
+      "summary": "The stated mission: well-inform the world by showing readers how information is presented to them, so they can think freely about it. The Mission page is equally plain about what Ground is not — not a news source, not a fact-checker: a guide.",
+      "evidence": "“Ground News isn't a fact-checker, because we believe in empowerment, not enablement.” — Mission",
+      "sources": [
+        "gn-mission",
+        "gn-about"
+      ],
+      "themes": [
+        "promise"
+      ]
+    },
+    {
+      "id": "neutrality-claim",
+      "title": "No Ideology, No Agenda",
+      "type": "claim",
+      "cluster": "promise",
+      "summary": "Ground asserts neutrality as a principle: no ideology, non-partisan, no political agenda. A claim about motive has no testable referent, so Claim Checker records it as Unverifiable by design — while noting the structural facts that sit beside it elsewhere in this map.",
+      "evidence": "“Ground News has no ideology, it is non-partisan” — Mission; “Ground has no political agenda” — FAQ",
+      "sources": [
+        "gn-mission",
+        "gn-faq"
+      ],
+      "themes": [
+        "promise",
+        "verdict: unverifiable by design"
+      ]
+    },
+    {
+      "id": "subscription-not-ads",
+      "title": "Subscription, Not Ads",
+      "type": "claim",
+      "cluster": "promise",
+      "summary": "A founding principle: sell solutions to users, not users to advertisers, and let subscriptions keep the lights on. It is the promise that makes the company's YouTube sponsorship scale — filed under The Money — worth a second look.",
+      "evidence": "“We prefer to make our money by selling solutions to our users” — Mission, principle 2–3",
+      "sources": [
+        "gn-mission"
+      ],
+      "themes": [
+        "promise",
+        "business model"
+      ]
+    },
+    {
+      "id": "scale-claim",
+      "title": "50,000 Sources, 60,000 a Day",
+      "type": "claim",
+      "cluster": "promise",
+      "summary": "The headline scale: nearly 60,000 articles a day from over 50,000 sources. No independent audit or measurement of either figure exists; every repetition in press, reviews and listings traces back to Ground itself — one source, however many echoes.",
+      "evidence": "“nearly 60,000 news articles from over 50,000 different news sources” — About",
+      "sources": [
+        "gn-about",
+        "gn-faq",
+        "producthunt"
+      ],
+      "themes": [
+        "numbers",
+        "verdict: self-reported only"
+      ],
+      "details": "Ground's own January 2020 launch post said 40,000 sources and ~30,000 stories, so the growth itself is plausible; the numbers remain the company's own."
+    },
+    {
+      "id": "largest-aggregator",
+      "title": "“Largest in the World”",
+      "type": "claim",
+      "cluster": "promise",
+      "summary": "Ground's app-store listing copy calls it the largest news aggregator in the world. The audit found no independent ranking to support the superlative, and — on the pages captured — the claim does not appear on Ground's own website. That absence rests on one agent's capture and is flagged as such in the audit.",
+      "evidence": "“Ground News is the largest news aggregator in the world” — Google Play listing copy",
+      "sources": [
+        "play-store"
+      ],
+      "themes": [
+        "numbers",
+        "verdict: self-reported only"
+      ]
+    },
+    {
+      "id": "bias-three-raters",
+      "title": "Bias: Three Raters, Averaged",
+      "type": "method",
+      "cluster": "method",
+      "featured": true,
+      "summary": "The core mechanism is real: Ground does not rate outlets itself. Its bias rating averages the published ratings of three independent monitors — AllSides, Ad Fontes Media and Media Bias/Fact Check — and the Ground team, by its own FAQ, takes no part in evaluating them.",
+      "evidence": "“Our Bias rating averages the following 3 independent news monitoring organizations” — Rating System",
+      "sources": [
+        "gn-rating",
+        "gn-faq",
+        "allsides",
+        "adfontes",
+        "mbfc"
+      ],
+      "themes": [
+        "method"
+      ],
+      "details": "Claim Checker: Partially corroborated — the structure checks out; the computation cannot be re-run (see Three Scales, No Formula)."
+    },
+    {
+      "id": "bias-scales",
+      "title": "Three Scales, No Formula",
+      "type": "method",
+      "cluster": "method",
+      "summary": "The three raters measure differently: Ad Fontes scores bias −42 to +42, Media Bias/Fact Check −10 to +10 (U. S. -centric), and AllSides publishes categories plus a −6 to +6 meter. An independent explainer had to invent its own rescaling to do the same job.",
+      "evidence": "Ad Fontes bias −42 to +42; MBFC −10 to +10; AllSides Media Bias Meter −6 to +6",
+      "sources": [
+        "adfontes",
+        "mbfc",
+        "allsides",
+        "gn-rating"
+      ],
+      "themes": [
+        "method",
+        "limits"
+      ],
+      "details": "Ground says each source's overall position is a composite of the relative positions — and publishes no mapping or formula, so no reader can reproduce a single rating."
+    },
+    {
+      "id": "factuality-two-raters",
+      "title": "Factuality: Two Raters",
+      "type": "method",
+      "cluster": "method",
+      "featured": true,
+      "summary": "On its methodology page, Ground states factuality correctly: it averages two systems, Ad Fontes Media and Media Bias/Fact Check — the two raters that actually produce a factuality-type score. The Columbia Journalism Review confirms the same split independently. Claim Checker: Confirmed, as stated on this page.",
+      "evidence": "“The Factuality rating averages the following 2 trusted rating systems” — Rating System",
+      "sources": [
+        "gn-rating",
+        "cjr"
+      ],
+      "themes": [
+        "method",
+        "verdict: confirmed"
+      ]
+    },
+    {
+      "id": "reliability-relabel",
+      "title": "Reliability, Relabelled",
+      "type": "method",
+      "cluster": "method",
+      "summary": "A nuance the validators added: Ad Fontes calls its axis “reliability” — a composite of veracity, expression and headline accuracy — not “factuality.” Ground's label renames that composite.",
+      "evidence": "Ad Fontes rates “reliability” (0–64) and bias (−42 to +42) — its own methodology",
+      "sources": [
+        "adfontes",
+        "gn-rating"
+      ],
+      "themes": [
+        "method",
+        "limits"
+      ],
+      "details": "The score Ground shows is real; the word on it is Ground's choice, and it sounds more like a verdict on facts than the rater's own word does."
+    },
+    {
+      "id": "publication-not-article",
+      "title": "Publications, Not Articles",
+      "type": "method",
+      "cluster": "method",
+      "featured": true,
+      "summary": "The disclosure exists, on the methodology page: scores describe a publication as a whole, not the article in front of you. Critics argue the “Factuality” label nevertheless travels into the product beside individual stories, where the disclosure does not.",
+      "evidence": "“Scores apply to each publication as a whole, not to their individual articles.” — Rating System",
+      "sources": [
+        "gn-rating",
+        "malone"
+      ],
+      "themes": [
+        "method",
+        "disclosure"
+      ],
+      "details": "The audit did not verify the in-product placement — that is Round 2, Question 7 — and records the criticism as a critic's claim, not a finding."
+    },
+    {
+      "id": "blindspot",
+      "title": "Blindspot",
+      "type": "method",
+      "cluster": "method",
+      "summary": "The signature feature: stories one side of the spectrum covers heavily while the other barely touches them, surfaced in a dedicated feed. The mechanism exists and operates as described. What it does to readers is a separate, thinner record — see Blindspot, Tested Once.",
+      "evidence": "“disproportionately covered by media sources on one side of the political spectrum” — Rating System",
+      "sources": [
+        "gn-rating",
+        "gn-blindspot"
+      ],
+      "themes": [
+        "method"
+      ]
+    },
+    {
+      "id": "blindspot-formula",
+      "title": "A Formula, Half-Published",
+      "type": "method",
+      "cluster": "method",
+      "summary": "Ground publishes a qualifying formula — for a Blindspot for the Left: fewer than 10 left-leaning sources, right coverage at or above 33%, a proportional condition, and a cap on low-factuality coverage. No symmetric formula for the Right appears on the methodology page.",
+      "evidence": "Blindspot for the Left: “Fewer than 10 Left-leaning sources reporting”; “Right-leaning coverage is greater than or equal to 33%”",
+      "sources": [
+        "gn-rating"
+      ],
+      "themes": [
+        "method",
+        "limits"
+      ],
+      "details": "Publishing any formula puts Ground ahead of most comparable products; publishing half of one is the honest seam. The specifics rest on the audit generator's capture and are flagged for re-capture."
+    },
+    {
+      "id": "blindspot-test",
+      "title": "Blindspot, Tested Once",
+      "type": "record",
+      "cluster": "method",
+      "start": "2024-02-16",
+      "summary": "The only peer-reviewed efficacy test found: Bram (PLOS ONE, 2024) ran the weekly Blindspot Report newsletter — not the in-app feed — with over 1,200 subscribers. Three of four stories did not change minds; one reduced polarization in context. He disclosed working with Ground to run the experiment, unpaid.",
+      "evidence": "“three of the four stories did not change people's minds” — Bram, PLOS ONE (2024)",
+      "when": "Published 16 February 2024",
+      "sources": [
+        "plosone",
+        "cjr"
+      ],
+      "themes": [
+        "evidence",
+        "verdict: partially corroborated"
+      ],
+      "details": "Bram's own conclusion was warmer than the audit's first framing: the approach is “promising.”"
+    },
+    {
+      "id": "ownership-dataset",
+      "title": "Ownership, Hand-Coded",
+      "type": "method",
+      "cluster": "method",
+      "summary": "The one dataset Ground builds itself: ownership categories for news outlets, researched and hand-coded in-house. The count — 2,276 outlets — is the company's own, and no independent audit of the dataset exists.",
+      "evidence": "“hand-coded ownership data for 2,276 news outlets and counting” — Rating System",
+      "sources": [
+        "gn-rating"
+      ],
+      "themes": [
+        "method",
+        "verdict: self-reported only"
+      ],
+      "details": "How much of the rated universe that covers is, on an honest base, unknown: the audit's first draft divided it by the 50,000-source corpus, and the validators made it label that an inference and withdraw the payload."
+    },
+    {
+      "id": "faq-three-raters",
+      "title": "The FAQ Says Three",
+      "type": "claim",
+      "cluster": "contradictions",
+      "featured": true,
+      "summary": "Standing opposite the methodology page: Ground's FAQ — and the FAQ on its Subscribe page — say bias and factuality ratings are both averaged from three organisations, AllSides included.",
+      "evidence": "“Bias and factuality ratings are averaged from the published ratings from three” organisations — FAQ",
+      "sources": [
+        "gn-faq",
+        "gn-subscribe"
+      ],
+      "themes": [
+        "contradiction",
+        "verdict: contradicted"
+      ],
+      "details": "Read collectively, the sentence could mean the three between them supply both ratings; read naturally, as every secondary source reads it, it says each rating averages all three. The audit records the ambiguity — and the verdict stands on the natural reading plus the conflict with Ground's own Rating System page."
+    },
+    {
+      "id": "allsides-no-accuracy",
+      "title": "AllSides Rates No Accuracy",
+      "type": "record",
+      "cluster": "contradictions",
+      "featured": true,
+      "summary": "The referee in the factuality dispute is one of the raters itself. AllSides states, in its own materials, that it does not rate accuracy or credibility at all — it rates perspective only.",
+      "evidence": "“We don't rate accuracy or credibility, because we're not a Ministry of Truth.” — AllSides",
+      "sources": [
+        "allsides"
+      ],
+      "themes": [
+        "evidence",
+        "contradiction"
+      ],
+      "details": "A factuality average cannot include a rater that produces no factuality rating, which is why this node stands beside both versions of Ground's claim."
+    },
+    {
+      "id": "subscribe-no-algorithms",
+      "title": "“We Don’t Use Algorithms”",
+      "type": "claim",
+      "cluster": "contradictions",
+      "summary": "The sales page's blanket form: Ground does not use algorithms to shape what you see; you choose the stories. The same page lists personalised story recommendations as a feature. Claim Checker: Contradicted — by the company's own FAQ, standing opposite.",
+      "evidence": "“We don't use algorithms to shape what you see. You choose the stories.” — Subscribe",
+      "sources": [
+        "gn-subscribe"
+      ],
+      "themes": [
+        "contradiction",
+        "verdict: contradicted"
+      ]
+    },
+    {
+      "id": "myfeed-algorithmic",
+      "title": "My Feed Is Algorithmic",
+      "type": "record",
+      "cluster": "contradictions",
+      "summary": "The FAQ's own description of the product: Top Stories are picked by an editorial team, and the My Feed tab is a personalised collection, algorithmically curated from what you say you follow and what you actually read.",
+      "evidence": "“algorithmically curated based on stated and observed reading behaviors” — FAQ, on My Feed",
+      "sources": [
+        "gn-faq"
+      ],
+      "themes": [
+        "contradiction",
+        "evidence"
+      ],
+      "details": "The narrower claim made elsewhere — freedom from engagement-maximising algorithms — is a different claim, and on this record it is self-reported only."
+    },
+    {
+      "id": "reviews-10k",
+      "title": "10,000+ Five-Star Reviews",
+      "type": "claim",
+      "cluster": "contradictions",
+      "summary": "One floor, published on the homepage hero — and in Ground's own Trustpilot company description, which gives the same “over 10,000 5-star reviews” for the app stores combined. Stores publish ratings, not reviews, and Ground publishes no basis or date for the figure.",
+      "evidence": "“over 10,000 5-star reviews in the App Store and Play Store” — Ground's Trustpilot description",
+      "sources": [
+        "gn-home",
+        "trustpilot"
+      ],
+      "themes": [
+        "numbers",
+        "contradiction"
+      ]
+    },
+    {
+      "id": "reviews-53k",
+      "title": "53,000+ Five-Star Reviews",
+      "type": "claim",
+      "cluster": "contradictions",
+      "summary": "The other floor, on the Subscribe page the same day. The audit's first draft called the pair a contradiction; a validator caught the logic — both numbers carry a “+”, so if the true count is at least 53,000, the 10,000+ claim is also true. Corrected verdict: Partially corroborated.",
+      "evidence": "“50,000+ sources • 53,000+ 5-star reviews” — Subscribe (capture, 13 Nov 2026)",
+      "sources": [
+        "gn-subscribe",
+        "play-store"
+      ],
+      "themes": [
+        "numbers",
+        "verdict: partially corroborated"
+      ],
+      "details": "A stale floor is drift, not contradiction, and Play's own histogram (78% of ~33K ratings are five stars) makes a combined ~53K plausible. The 53,000+ figure itself rests on the audit generator's capture alone."
+    },
+    {
+      "id": "no-institutional-claim",
+      "title": "“No Institutional Investors”",
+      "type": "claim",
+      "cluster": "money",
+      "featured": true,
+      "summary": "The Mission page's formulation: not funded by a media company, big tech or institutional investors — supported by subscribers and a small group of individual investors. The FAQ repeats it: a handful of mission-aligned independent individual investors, no ties to corporate media, big tech or government.",
+      "evidence": "“We are not funded by a media company, big tech or institutional investors.” — Mission",
+      "sources": [
+        "gn-mission",
+        "gn-faq"
+      ],
+      "themes": [
+        "money",
+        "verdict: contradicted"
+      ],
+      "details": "Read the investor record standing opposite before deciding what this sentence is worth."
+    },
+    {
+      "id": "investor-record",
+      "title": "The Investor Record",
+      "type": "record",
+      "cluster": "money",
+      "summary": "The funding databases name venture and institutional-type investors: Techstars and Techstars Ventures, Right Side Capital Management, Something Good Ventures, 37 Angels, Blue Lagoon Capital, Velocity and others.",
+      "evidence": "PitchBook lists 10 investors; CB Insights names “Techstars Ventures… Right Side Capital Management and 5 more”",
+      "sources": [
+        "pitchbook",
+        "cbinsights",
+        "rightside"
+      ],
+      "themes": [
+        "money",
+        "evidence"
+      ],
+      "details": "Right Side Capital describes itself, on its own site, as frequently the first institutional investor a founder has had. The letter of “individual investors only” does not survive this record; the amounts, though, are pre-seed small — no funder on it is plausibly buying control."
+    },
+    {
+      "id": "velocity-first-institutional",
+      "title": "“First Institutional Investor”",
+      "type": "record",
+      "cluster": "money",
+      "summary": "The strongest single document in the money thread, surfaced by a validator after the audit under-built it: the University of Waterloo's own release for Velocity Fund II says the fund aims to be the first institutional investor in promising startups — and names Ground News among the companies that have benefited from",
+      "evidence": "Velocity Fund II “aims to be the first institutional investor” — and names Ground News — UWaterloo",
+      "sources": [
+        "uw-velocity",
+        "pitchbook"
+      ],
+      "themes": [
+        "money",
+        "evidence"
+      ],
+      "details": "its investments. A self-described institutional investor, naming its investment in Ground, in a primary source."
+    },
+    {
+      "id": "totals-spread",
+      "title": "Four Totals, $20K–$1.01M",
+      "type": "record",
+      "cluster": "money",
+      "summary": "Ask four databases what Ground raised and get four answers: $20K (Tracxn), $170K (BounceWatch), $340K (CB Insights), $1. 01M (PitchBook). The databases conflate the predecessor company's raises with Ground's, and an undisclosed May 2025 venture round post-dates the frozen totals.",
+      "evidence": "Totals on record: $20K / $170K / $340K / $1.01M across Tracxn, BounceWatch, CB Insights, PitchBook",
+      "sources": [
+        "tracxn",
+        "cbinsights",
+        "pitchbook"
+      ],
+      "themes": [
+        "money",
+        "numbers"
+      ],
+      "details": "The validators were precise about whose failure this is: databases disagreeing with each other — not Ground changing its number. The total is unverifiable; the disagreement is documented."
+    },
+    {
+      "id": "dnic-open-lead",
+      "title": "The DNIC Lead — Open",
+      "type": "lead",
+      "cluster": "money",
+      "featured": true,
+      "summary": "An unresolved lead, modelled as one — not a finding. CB Insights lists a “Digital News Innovation Challenge” among Ground's investors, and a Carleton University journal article documents Ground's participation in that programme.",
+      "evidence": "“$100,000 in funding and the Facebook ad [credits]” — Guida, Facts & Frictions (2021), on DNIC",
+      "sources": [
+        "carleton",
+        "cbinsights"
+      ],
+      "themes": [
+        "money",
+        "open lead"
+      ],
+      "details": "The programme was a Canadian initiative partnered with the Facebook Journalism Project; the Carleton article records $100,000 in funding and Facebook ad credits from Kaur's own account. That is not a big-tech equity investment and does not change the funding verdict. It is also not nothing, and the audit's first draft wrongly declared this limb closed. Round 2, Question 1 digs here."
+    },
+    {
+      "id": "youtube-most-sponsored",
+      "title": "#1 Most-Sponsored on YouTube",
+      "type": "record",
+      "cluster": "money",
+      "featured": true,
+      "start": "2025-01-01",
+      "end": "2025-06-30",
+      "summary": "In the first half of 2025, Ground News was the most-sponsored brand on YouTube in Gospel Stats' sample — first by paid creator integrations and first by views. The qualification matters: English-language channels, videos reaching 25,000 views within seven days; not a full-year title and not a ranking by spend.",
+      "evidence": "1,863 sponsored integrations (+202% YoY) and 664M views, H1 2025 — Gospel Stats via Tubefilter",
+      "when": "First half of 2025",
+      "sources": [
+        "tubefilter"
+      ],
+      "themes": [
+        "distribution",
+        "numbers"
+      ],
+      "details": "Every report of it derives from that one dataset. A product sold as the antidote to native advertising is, at minimum, distributed very heavily through it — how primarily is an inference, and it is drawn dashed."
+    },
+    {
+      "id": "rater-economics",
+      "title": "Who Pays the Raters?",
+      "type": "record",
+      "cluster": "money",
+      "summary": "Three raters, three different relationships, averaged into one adjective — “independent.” On the Columbia Journalism Review's record: Ad Fontes is paid by Ground; Media Bias/Fact Check's founder said there is no agreement; AllSides' COO said its ratings are used without formal permission and without compensation.",
+      "evidence": "CJR: Ad Fontes' CEO said Ground pays Ad Fontes; AllSides' COO cited no “formal permission” and no compensation",
+      "sources": [
+        "cjr"
+      ],
+      "themes": [
+        "money",
+        "accountability"
+      ],
+      "details": "Ground's answer, restored by the validators after the audit paraphrased it away: it does not disclose ongoing business relationships and arrangements."
+    },
+    {
+      "id": "mattke-board",
+      "title": "A Director's Other Desks",
+      "type": "person",
+      "cluster": "money",
+      "summary": "A board fact, stated as a fact and no further: Manuel Mattke sits in Snapwise's corporate record as a director. He is president and COO of Opportunity Education, the foundation Joe Ricketts founded, and an advisory-board member of Ricketts-owned Straight Arrow News.",
+      "evidence": "Opportunity Education lists “Manuel Mattke, President and COO” under founder Joe Ricketts",
+      "sources": [
+        "corp-canada",
+        "opportunity-ed",
+        "literatemachine"
+      ],
+      "themes": [
+        "people",
+        "board"
+      ],
+      "details": "No evidence in this record shows Ricketts funding Ground News, and this story does not claim it — the inference is named here precisely so it is not smuggled in."
+    },
+    {
+      "id": "straight-arrow",
+      "title": "The Straight Arrow Partnership",
+      "type": "record",
+      "cluster": "money",
+      "summary": "A structural, checkable tie: Straight Arrow News — a Ricketts-owned outlet that sells the same “unbiased, without agenda” positioning — operates in partnership with Ground News for some of its news output. No terms are public.",
+      "evidence": "Straight Arrow “operates in partnership with Ground News for some of its news output” — Literate Machine",
+      "sources": [
+        "literatemachine"
+      ],
+      "themes": [
+        "money",
+        "partnership"
+      ],
+      "details": "The partnership does not resolve Ground's neutrality claim, which remains unverifiable as a claim about motive; it sits beside that claim as a fact a reader of the claim cannot see from the claim itself."
+    },
+    {
+      "id": "snapwise-2014",
+      "title": "Snapwise Inc., 2014",
+      "type": "event",
+      "cluster": "company",
+      "start": "2014-03-26",
+      "summary": "The legal company predates the product by years: Snapwise Inc. was federally incorporated in Canada on 26 March 2014, and remains the active corporation behind Ground News, with Harleen Kaur Jolly and Sukhsagar Singh Jolly among its directors.",
+      "evidence": "Snapwise Inc., Corp. No. 883500-4, incorporated 2014-03-26 — Corporations Canada",
+      "when": "26 March 2014, Kitchener, Ontario",
+      "sources": [
+        "corp-canada"
+      ],
+      "themes": [
+        "origins",
+        "dates"
+      ],
+      "details": "It was incorporated for the siblings' earlier venture — which is why “founded the company in 2017” needs care (see “Founded in 2017”)."
+    },
+    {
+      "id": "ucic-predecessor",
+      "title": "Before Ground: uCiC",
+      "type": "company",
+      "cluster": "company",
+      "summary": "The predecessor: before Ground News, the siblings built uCiC, an eyewitness-photo app, inside the same company. It matters to this story for one reason — the earliest detailed telling of Harleen Kaur's NASA story is a January 2017 profile of uCiC, where she is the interview subject.",
+      "evidence": "Story Exchange, Jan 2017: the siblings' Waterloo company was built for uCiC, an eyewitness app",
+      "when": "Profiled January 2017",
+      "sources": [
+        "story-exchange"
+      ],
+      "themes": [
+        "origins"
+      ],
+      "details": "The chain of that biography starts there, with her, before Ground News existed."
+    },
+    {
+      "id": "founding-2017",
+      "title": "“Founded in 2017”",
+      "type": "claim",
+      "cluster": "company",
+      "start": "2017",
+      "summary": "Ground's About page says the siblings founded the company in 2017, out of Waterloo's Velocity incubator. The University of Waterloo's news service repeats 2017 — the strongest third-party repetition, though founder-sourced and not contemporary. Claim Checker: Partially corroborated.",
+      "evidence": "“founded the company in 2017 out of the University of Waterloo's Velocity incubator” — About",
+      "when": "2017, as claimed",
+      "sources": [
+        "gn-about",
+        "uw-2017",
+        "corp-canada"
+      ],
+      "themes": [
+        "origins",
+        "verdict: partially corroborated"
+      ],
+      "details": "Read as the founding of the Ground News venture, 2017 is the company's account and plausible; read as the founding of the company, the registry says 2014."
+    },
+    {
+      "id": "launch-2018",
+      "title": "Launch: 27 April 2018",
+      "type": "event",
+      "cluster": "company",
+      "start": "2018-04-27",
+      "summary": "The first public product is independently dated: the trademark record gives first use of the Ground News name as 31 March 2018, the apps released that April, and Ground's own History page enters the launch under 27 April 2018. Whatever “founded” means, something a user could download exists from this spring.",
+      "evidence": "“04/27 /2018 — Ground News Launch” — Ground's History page; trademark first use 31 Mar 2018",
+      "when": "27 April 2018 (Ground's own history)",
+      "sources": [
+        "gn-history",
+        "play-store"
+      ],
+      "themes": [
+        "origins",
+        "dates"
+      ]
+    },
+    {
+      "id": "pro-launch-2020",
+      "title": "Ground News Pro, 2020",
+      "type": "event",
+      "cluster": "company",
+      "start": "2020-01-15",
+      "summary": "The current comparison platform — Pro, with Blindspot — launched on 15 January 2020, per contemporary coverage. Ground's own launch post that month quoted 40,000 outlets and ~30,000 stories a day: the baseline from which the headline scale later grew.",
+      "evidence": "“on January 15, she launched Ground News” — MediaVillage, Feb 2020",
+      "when": "15 January 2020",
+      "sources": [
+        "mediavillage",
+        "producthunt"
+      ],
+      "themes": [
+        "origins",
+        "dates"
+      ],
+      "details": "Some retellings mistake this launch for the founding; it is the third date in a sequence, not the first."
+    },
+    {
+      "id": "kaur-nasa",
+      "title": "Kaur and NASA",
+      "type": "person",
+      "cluster": "company",
+      "summary": "The founder biography: an aerospace-engineering degree, a career started at NASA, work on the Pluto-bound New Horizons spacecraft. No NASA, Johns Hopkins APL or university record naming her was found; every profile repeats near-identical supplied wording that traces to Kaur herself. Claim Checker: Self-reported only.",
+      "evidence": "“started her career at NASA where she worked on the Pluto-bound spacecraft New Horizons” — About",
+      "sources": [
+        "gn-about",
+        "story-exchange"
+      ],
+      "themes": [
+        "people",
+        "verdict: self-reported only"
+      ],
+      "details": "In fairness, the timeline coheres — a January 2005 integration-test role sits naturally before New Horizons' January 2006 launch — but coherence is not corroboration."
+    },
+    {
+      "id": "singh-bio",
+      "title": "Sukh Singh",
+      "type": "person",
+      "cluster": "company",
+      "summary": "The co-founder's biography as Ground tells it: consulting at IBM and KPMG, then Bain & Company, then his own company, Watchful; a Waterloo BA and an Oxford master's in Decision Science. Nothing here asserts it is wrong; it is untested.",
+      "evidence": "“later at Bain & Company before starting his own company Watchful” — About",
+      "sources": [
+        "gn-about"
+      ],
+      "themes": [
+        "people",
+        "open question"
+      ],
+      "details": "The audit captured this biography but never ran it through the battery it applied to Kaur's — an asymmetry the Round 2 questions name (Question 13)."
+    },
+    {
+      "id": "app-scale",
+      "title": "1M+ Downloads — a Bracket",
+      "type": "record",
+      "cluster": "company",
+      "summary": "The scale claim that does check out, at bracket level: Google Play shows Ground News past one million installs — a bracket, not a count — with roughly 33,000 ratings averaging 4. 55. Apple's US listing shows 4. Claim Checker: Confirmed, as a bracket.",
+      "evidence": "Google Play: “1,000,000+” installs; Apple (US): 4.7 out of 5, 49K ratings",
+      "sources": [
+        "play-store",
+        "apple-store"
+      ],
+      "themes": [
+        "numbers",
+        "verdict: confirmed"
+      ],
+      "details": "7 from 49,000 ratings, and Apple publishes no download count at all, so any precise cross-platform total is unverifiable."
+    },
+    {
+      "id": "cc-standard",
+      "title": "The Claim Checker Standard",
+      "type": "method",
+      "cluster": "audit",
+      "summary": "The instrument: claims captured verbatim before analysis; sources grouped by independence, so fourteen echoes of one announcement count as one source; a contradiction pass against every material thesis; and exactly five verdicts — Confirmed, Partially corroborated, Self-reported only, Unverifiable by design,",
+      "evidence": "“We are not a ratings agency and we do not sell scores.” — the Standard's mission",
+      "sources": [
+        "cc-standard"
+      ],
+      "themes": [
+        "audit",
+        "method"
+      ],
+      "details": "Contradicted. “We could not verify this” is a publishable result, never a gap to smooth over."
+    },
+    {
+      "id": "the-audit",
+      "title": "The Audit: 16 Atoms",
+      "type": "event",
+      "cluster": "audit",
+      "start": "2026-11-13",
+      "summary": "On 13 November 2026, Claim Checker ran Ground News through the Standard: every public claim that mattered, atomised — scale, ratings, algorithms, founding, biography, funding, reviews, ownership, neutrality — and tested against records independent of the company. Ground's own pages were captured live the same day.",
+      "evidence": "16 claim atoms, seven tests, one contradiction pass — audit record, 13 Nov 2026",
+      "when": "13 November 2026",
+      "sources": [
+        "cc-record",
+        "cc-standard"
+      ],
+      "themes": [
+        "audit"
+      ],
+      "details": "The audit is an internal record; nothing in this story was published to Ground or about it."
+    },
+    {
+      "id": "verdict-tally",
+      "title": "The Corrected Tally",
+      "type": "verdict",
+      "cluster": "audit",
+      "featured": true,
+      "summary": "After validation, the count stands: 3 Confirmed, 4 Partially corroborated, 4 Self-reported only, 2 Unverifiable by design, 3 Contradicted — sixteen atoms, one verdict each. The three Contradicted are the load-bearing ones: the FAQ's factuality, the sales page's algorithms, the mission page's investors.",
+      "evidence": "Confirmed 3 · Partially corroborated 4 · Self-reported only 4 · Unverifiable 2 · Contradicted 3",
+      "sources": [
+        "cc-record"
+      ],
+      "themes": [
+        "audit",
+        "verdicts"
+      ],
+      "details": "Note what did not happen to the tally's neighbours: the methodology page's own factuality claim is among the Confirmed."
+    },
+    {
+      "id": "one-line-finding",
+      "title": "The One-Line Finding",
+      "type": "verdict",
+      "cluster": "audit",
+      "featured": true,
+      "summary": "Ground News built a transparency product whose own transparency claims are its weakest surface: its methodology page is mostly honest, and its FAQ, sales page and mission page contradict that methodology page on factuality, algorithms and funding.",
+      "evidence": "Finding rests on GN-05 (factuality), GN-06 (algorithms), GN-09 (funding) — none re-verdicted",
+      "sources": [
+        "cc-record"
+      ],
+      "themes": [
+        "audit",
+        "verdict"
+      ],
+      "details": "Both validators tested this sentence against the ledger and left it unchanged — it rests on atoms none of their exceptions touched."
+    },
+    {
+      "id": "validator-pass",
+      "title": "Generator ≠ Validator",
+      "type": "method",
+      "cluster": "audit",
+      "summary": "The audit was then audited: two validators who did not generate it re-checked every atom against the primary sources, hunting for errors. Both filed “Cleared with exceptions.”",
+      "evidence": "Validator A (GN-01–08) and Validator B (GN-09–16): both “Cleared with exceptions”",
+      "sources": [
+        "cc-record",
+        "cc-standard"
+      ],
+      "themes": [
+        "audit",
+        "validation"
+      ],
+      "details": "Their filings confirmed the load-bearing findings, strengthened two (a better funding source; a structural tie the audit had footnoted) — and overturned two of the generator's verdicts, which stand corrected in the errata, beside the originals."
+    },
+    {
+      "id": "corrections-beside-errors",
+      "title": "Corrections Beside Errors",
+      "type": "verdict",
+      "cluster": "audit",
+      "summary": "The two errors are kept in the record, not edited away. First: the review-count pair was called Contradicted — a plus-floor logic error, since 53,000+ makes 10,000+ true, not false. Second: the 83-cents-a-month tier was called a legacy price — it is a live tier, and the pricing atom is Confirmed as stated.",
+      "evidence": "GN-10: Contradicted → Partially corroborated. GN-16: Partially corroborated → Confirmed. (Errata, 13 Nov 2026)",
+      "sources": [
+        "cc-record"
+      ],
+      "themes": [
+        "audit",
+        "corrections"
+      ],
+      "details": "Claim Checker's rule is that corrections append as dated errata; audits are never overwritten. The desk that checks everyone else's numbers shows its working when its own are wrong."
+    },
+    {
+      "id": "accountability-record",
+      "title": "Accountability, Graded Weak",
+      "type": "verdict",
+      "cluster": "audit",
+      "summary": "How the company answers when checked: graded weak, on a fair record. It gave CJR a quotable reason rather than silence; it answers users publicly and substantively, on Trustpilot and its store listings, including on its ratings method.",
+      "evidence": "“Edit Bias Rating” changes a rating “on your personal account” only — Rating System / FAQ record",
+      "sources": [
+        "cjr",
+        "trustpilot",
+        "gn-rating"
+      ],
+      "themes": [
+        "audit",
+        "accountability"
+      ],
+      "details": "But the only fix a user can make to a disputed rating — “Edit Bias Rating” — changes the rating on their own account and corrects nothing public, and the rater relationships behind its core product were left unexplained to the one outlet that asked on the record."
+    },
+    {
+      "id": "press-laundering",
+      "title": "One Source, Many Echoes",
+      "type": "concept",
+      "cluster": "audit",
+      "summary": "The audit's press-laundering test, and its most quietly damning result: the 50,000 sources, the 60,000 articles, the 2017 founding, the NASA biography and the “largest aggregator” superlative appear in outlet after outlet — and grouped by independence they are one source, Ground News, repeated.",
+      "evidence": "Scale, founding, NASA bio and superlative: one independence group — Ground News itself",
+      "sources": [
+        "cc-record",
+        "gn-about"
+      ],
+      "themes": [
+        "audit",
+        "mechanism"
+      ],
+      "details": "Even Wikipedia's citations for these claims terminate at Ground's own About page. Repetition is not corroboration; it is distribution."
+    },
+    {
+      "id": "round2-questions",
+      "title": "What We Would Ask Next",
+      "type": "concept",
+      "cluster": "audit",
+      "featured": true,
+      "summary": "The audit ends open, on purpose. Fifteen follow-up questions in five threads — the money (DNIC's full terms; a raise-by-raise reconstruction), the product in hand (does “Factuality” sit beside individual stories? ), the method (can anyone rebuild the composite? Each question names what it could move.",
+      "evidence": "15 questions, 5 threads — Round 2 Next Questions, 13 Nov 2026 (Q1: the DNIC money; Q14: the accountability experiment)",
+      "sources": [
+        "cc-record"
+      ],
+      "themes": [
+        "audit",
+        "open questions"
+      ],
+      "details": "), the people (ask the NASA record-holders directly), and one live experiment: file the factuality contradiction with Ground through its own feedback channel, and clock who answers. Unpicked, they stay on file with the audit."
+    }
+  ],
+  "edges": [
+    {
+      "source": "ground-news",
+      "target": "slogan",
+      "label": "promises",
+      "kind": "explicit",
+      "sources": [
+        "gn-home"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "mission-think-freely",
+      "label": "states its mission as",
+      "kind": "explicit",
+      "sources": [
+        "gn-mission"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "snapwise-2014",
+      "label": "is operated by",
+      "kind": "explicit",
+      "sources": [
+        "corp-canada",
+        "play-store"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "scale-claim",
+      "label": "sells itself on",
+      "kind": "explicit",
+      "sources": [
+        "gn-about"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "bias-three-raters",
+      "label": "builds its bias bar from",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "largest-aggregator",
+      "label": "claims, in its store copy,",
+      "kind": "explicit",
+      "sources": [
+        "play-store"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "blindspot",
+      "label": "surfaces under-covered stories via",
+      "kind": "explicit",
+      "sources": [
+        "gn-blindspot"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "ownership-dataset",
+      "label": "hand-codes",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "subscribe-no-algorithms",
+      "label": "markets itself with",
+      "kind": "explicit",
+      "sources": [
+        "gn-subscribe"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "reviews-10k",
+      "label": "publishes",
+      "kind": "explicit",
+      "sources": [
+        "gn-home"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "reviews-53k",
+      "label": "also publishes",
+      "kind": "explicit",
+      "sources": [
+        "gn-subscribe"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "kaur-nasa",
+      "label": "was co-founded by the subject of",
+      "kind": "explicit",
+      "sources": [
+        "gn-about"
+      ]
+    },
+    {
+      "source": "ground-news",
+      "target": "app-scale",
+      "label": "passed, on Play, the bracket of",
+      "kind": "explicit",
+      "sources": [
+        "play-store"
+      ]
+    },
+    {
+      "source": "slogan",
+      "target": "mission-think-freely",
+      "label": "is cashed out as",
+      "kind": "explicit",
+      "sources": [
+        "gn-mission"
+      ]
+    },
+    {
+      "source": "mission-think-freely",
+      "target": "neutrality-claim",
+      "label": "asserts",
+      "kind": "explicit",
+      "sources": [
+        "gn-mission"
+      ]
+    },
+    {
+      "source": "mission-think-freely",
+      "target": "subscription-not-ads",
+      "label": "sets the business-model principle",
+      "kind": "explicit",
+      "sources": [
+        "gn-mission"
+      ]
+    },
+    {
+      "source": "mission-think-freely",
+      "target": "no-institutional-claim",
+      "label": "also claims, on the same page,",
+      "kind": "explicit",
+      "sources": [
+        "gn-mission"
+      ]
+    },
+    {
+      "source": "scale-claim",
+      "target": "largest-aggregator",
+      "label": "underwrites",
+      "kind": "inferred"
+    },
+    {
+      "source": "slogan",
+      "target": "publication-not-article",
+      "label": "is qualified, in the methodology's fine print, by",
+      "kind": "inferred"
+    },
+    {
+      "source": "bias-three-raters",
+      "target": "bias-scales",
+      "label": "combines",
+      "kind": "explicit",
+      "sources": [
+        "adfontes",
+        "mbfc",
+        "allsides"
+      ]
+    },
+    {
+      "source": "bias-three-raters",
+      "target": "factuality-two-raters",
+      "label": "is split, on the same page, into",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "bias-three-raters",
+      "target": "publication-not-article",
+      "label": "is likewise bounded by",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "bias-scales",
+      "target": "publication-not-article",
+      "label": "feeds, unreproducibly, into",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "factuality-two-raters",
+      "target": "reliability-relabel",
+      "label": "relabels one rater's axis, per",
+      "kind": "explicit",
+      "sources": [
+        "adfontes"
+      ]
+    },
+    {
+      "source": "factuality-two-raters",
+      "target": "publication-not-article",
+      "label": "is bounded by",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "blindspot",
+      "target": "blindspot-formula",
+      "label": "is defined by",
+      "kind": "explicit",
+      "sources": [
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "blindspot",
+      "target": "blindspot-test",
+      "label": "was tested, as a newsletter, in",
+      "kind": "explicit",
+      "sources": [
+        "plosone"
+      ]
+    },
+    {
+      "source": "faq-three-raters",
+      "target": "factuality-two-raters",
+      "label": "contradicts",
+      "kind": "explicit",
+      "sources": [
+        "gn-faq",
+        "gn-rating"
+      ]
+    },
+    {
+      "source": "allsides-no-accuracy",
+      "target": "faq-three-raters",
+      "label": "removes the third rater from",
+      "kind": "explicit",
+      "sources": [
+        "allsides"
+      ]
+    },
+    {
+      "source": "subscribe-no-algorithms",
+      "target": "myfeed-algorithmic",
+      "label": "is contradicted by",
+      "kind": "explicit",
+      "sources": [
+        "gn-subscribe",
+        "gn-faq"
+      ]
+    },
+    {
+      "source": "reviews-10k",
+      "target": "reviews-53k",
+      "label": "stands beside",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "no-institutional-claim",
+      "target": "investor-record",
+      "label": "is contradicted by",
+      "kind": "explicit",
+      "sources": [
+        "pitchbook",
+        "cbinsights"
+      ]
+    },
+    {
+      "source": "investor-record",
+      "target": "velocity-first-institutional",
+      "label": "includes",
+      "kind": "explicit",
+      "sources": [
+        "uw-velocity"
+      ]
+    },
+    {
+      "source": "investor-record",
+      "target": "totals-spread",
+      "label": "cannot be totalled because of",
+      "kind": "explicit",
+      "sources": [
+        "pitchbook",
+        "cbinsights",
+        "tracxn"
+      ]
+    },
+    {
+      "source": "velocity-first-institutional",
+      "target": "totals-spread",
+      "label": "post-dates, undisclosed,",
+      "kind": "explicit",
+      "sources": [
+        "pitchbook",
+        "cc-record"
+      ]
+    },
+    {
+      "source": "totals-spread",
+      "target": "dnic-open-lead",
+      "label": "sits unresolved beside",
+      "kind": "explicit",
+      "sources": [
+        "cbinsights",
+        "carleton"
+      ]
+    },
+    {
+      "source": "dnic-open-lead",
+      "target": "investor-record",
+      "label": "is listed, unresolved, in",
+      "kind": "explicit",
+      "sources": [
+        "cbinsights"
+      ]
+    },
+    {
+      "source": "youtube-most-sponsored",
+      "target": "subscription-not-ads",
+      "label": "raises the question for",
+      "kind": "inferred"
+    },
+    {
+      "source": "rater-economics",
+      "target": "bias-three-raters",
+      "label": "complicates the independence of",
+      "kind": "explicit",
+      "sources": [
+        "cjr"
+      ]
+    },
+    {
+      "source": "mattke-board",
+      "target": "snapwise-2014",
+      "label": "sits on the board of",
+      "kind": "explicit",
+      "sources": [
+        "corp-canada"
+      ]
+    },
+    {
+      "source": "mattke-board",
+      "target": "straight-arrow",
+      "label": "advises",
+      "kind": "explicit",
+      "sources": [
+        "literatemachine"
+      ]
+    },
+    {
+      "source": "straight-arrow",
+      "target": "ground-news",
+      "label": "partners with",
+      "kind": "explicit",
+      "sources": [
+        "literatemachine"
+      ]
+    },
+    {
+      "source": "straight-arrow",
+      "target": "neutrality-claim",
+      "label": "sits beside, as a structural fact",
+      "kind": "inferred"
+    },
+    {
+      "source": "snapwise-2014",
+      "target": "ucic-predecessor",
+      "label": "first built",
+      "kind": "explicit",
+      "sources": [
+        "story-exchange"
+      ]
+    },
+    {
+      "source": "ucic-predecessor",
+      "target": "founding-2017",
+      "label": "gave way to",
+      "kind": "explicit",
+      "sources": [
+        "story-exchange",
+        "gn-about"
+      ]
+    },
+    {
+      "source": "founding-2017",
+      "target": "launch-2018",
+      "label": "is followed in the record by",
+      "kind": "explicit",
+      "sources": [
+        "gn-history"
+      ]
+    },
+    {
+      "source": "launch-2018",
+      "target": "pro-launch-2020",
+      "label": "led to",
+      "kind": "explicit",
+      "sources": [
+        "mediavillage"
+      ]
+    },
+    {
+      "source": "pro-launch-2020",
+      "target": "scale-claim",
+      "label": "launched alongside a smaller version of",
+      "kind": "explicit",
+      "sources": [
+        "producthunt"
+      ]
+    },
+    {
+      "source": "kaur-nasa",
+      "target": "ucic-predecessor",
+      "label": "was first told in a profile of",
+      "kind": "explicit",
+      "sources": [
+        "story-exchange"
+      ]
+    },
+    {
+      "source": "singh-bio",
+      "target": "kaur-nasa",
+      "label": "stands untested beside",
+      "kind": "explicit",
+      "sources": [
+        "gn-about"
+      ]
+    },
+    {
+      "source": "ownership-dataset",
+      "target": "scale-claim",
+      "label": "covers an unknown share of",
+      "kind": "inferred"
+    },
+    {
+      "source": "cc-standard",
+      "target": "ground-news",
+      "label": "was applied to",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "the-audit",
+      "target": "cc-standard",
+      "label": "ran",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "the-audit",
+      "target": "verdict-tally",
+      "label": "produced",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "verdict-tally",
+      "target": "one-line-finding",
+      "label": "distils to",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "validator-pass",
+      "target": "the-audit",
+      "label": "re-checked",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "validator-pass",
+      "target": "corrections-beside-errors",
+      "label": "produced",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "corrections-beside-errors",
+      "target": "reviews-53k",
+      "label": "re-verdicted",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "corrections-beside-errors",
+      "target": "velocity-first-institutional",
+      "label": "surfaced a stronger source for",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "the-audit",
+      "target": "accountability-record",
+      "label": "graded",
+      "kind": "explicit",
+      "sources": [
+        "cc-record",
+        "cjr"
+      ]
+    },
+    {
+      "source": "press-laundering",
+      "target": "scale-claim",
+      "label": "explains the echoes of",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "round2-questions",
+      "target": "dnic-open-lead",
+      "label": "takes as its first question",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "the-audit",
+      "target": "round2-questions",
+      "label": "ends with",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "one-line-finding",
+      "target": "no-institutional-claim",
+      "label": "rests on",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "one-line-finding",
+      "target": "faq-three-raters",
+      "label": "and on",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    },
+    {
+      "source": "one-line-finding",
+      "target": "subscribe-no-algorithms",
+      "label": "and on",
+      "kind": "explicit",
+      "sources": [
+        "cc-record"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "the-promise",
+      "title": "The promise: freedom from other people's filters",
+      "summary": "Start where Ground starts: every side of every story, a mission to help readers think freely, neutrality as a principle, and a business model that sells to users rather than selling users. This path takes the promise at full strength — the rest of the map is what happens when you check it.",
+      "steps": [
+        "ground-news",
+        "slogan",
+        "mission-think-freely",
+        "neutrality-claim",
+        "subscription-not-ads"
+      ]
+    },
+    {
+      "id": "the-method",
+      "title": "How the method actually works",
+      "summary": "Ground's honest core: it does not rate outlets itself. Three raters' bias scores are averaged, two raters' reliability scores are renamed Factuality, everything is scored at publication level, and a published formula decides what counts as a Blindspot. The method is real; its seams — incommensurable scales, no published composite formula, a dataset nobody has audited — are on this path too.",
+      "steps": [
+        "bias-three-raters",
+        "bias-scales",
+        "publication-not-article",
+        "factuality-two-raters",
+        "reliability-relabel",
+        "blindspot",
+        "blindspot-formula",
+        "blindspot-test",
+        "ownership-dataset"
+      ]
+    },
+    {
+      "id": "the-contradictions",
+      "title": "The site argues with itself",
+      "summary": "No outside accuser is needed for this path: Ground's own pages, read against each other. The methodology page says factuality averages two raters; the FAQ says three, and the third rater itself refuses the job. The sales page denies algorithms; the FAQ describes one. Two review floors stand side by side, and the logic of the plus sign — not rhetoric — decides what that means.",
+      "steps": [
+        "factuality-two-raters",
+        "faq-three-raters",
+        "allsides-no-accuracy",
+        "subscribe-no-algorithms",
+        "myfeed-algorithmic",
+        "reviews-10k",
+        "reviews-53k"
+      ]
+    },
+    {
+      "id": "the-money",
+      "title": "Follow the money — what's actually there",
+      "summary": "“No institutional investors, a small group of individuals” meets the record: venture funds in four disagreeing databases, a university naming its would-be “first institutional investor” as a Ground backer, raters in three different paid and unpaid relationships, the heaviest YouTube sponsorship programme in its sample — and one open lead, DNIC, that this path deliberately leaves unresolved.",
+      "steps": [
+        "no-institutional-claim",
+        "investor-record",
+        "velocity-first-institutional",
+        "totals-spread",
+        "dnic-open-lead",
+        "rater-economics",
+        "youtube-most-sponsored"
+      ]
+    },
+    {
+      "id": "four-dates",
+      "title": "A company in four dates",
+      "summary": "“Founded in 2017” dissolves, on inspection, into a sequence any reader can check: a company incorporated in 2014 for a different app, a venture the founders date to 2017, a product launched in April 2018, and the current platform launched in January 2020. None of the four dates is a lie; the single year on the About page is doing work the sequence doesn't support.",
+      "steps": [
+        "snapwise-2014",
+        "ucic-predecessor",
+        "founding-2017",
+        "launch-2018",
+        "pro-launch-2020",
+        "app-scale"
+      ]
+    },
+    {
+      "id": "the-audit-and-next",
+      "title": "The audit — and what we would ask next",
+      "summary": "The instrument, the tally, and the audit's audit: two validators who didn't generate the report re-checked it, strengthened parts of it, and overturned two verdicts, which remain in the record beside their corrections. The path ends where the audit ends — not on a conclusion but on fifteen open questions, the first of which is the money nobody has yet explained.",
+      "steps": [
+        "cc-standard",
+        "the-audit",
+        "verdict-tally",
+        "one-line-finding",
+        "validator-pass",
+        "corrections-beside-errors",
+        "dnic-open-lead",
+        "round2-questions"
+      ]
+    }
+  ]
+}

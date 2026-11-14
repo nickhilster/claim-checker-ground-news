@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ground News · Story Graph</title>
+<meta name="description" content="A transparency product, audited claim by claim: its methodology page is mostly honest — and its FAQ, sales page and mission page argue with it. Built from Ground News&#39;s public pages and independent public records, each logged in research.md. Not affiliated with or endorsed by Ground News or Snapwise Inc. Claims the sources state differently are shown standing side by side, not resolved. Verdicts are Claim Checker&#39;s evidence assessments (see the Audit cluster), stated with their limits; the DNIC item is an unresolved lead, not a finding.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 16 7 8M16 16l9-5M16 16l2 10' stroke='%23204986' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23204986'/%3E%3Ccircle cx='7' cy='8' r='3' fill='%23204986'/%3E%3Ccircle cx='25' cy='11' r='3' fill='%23204986'/%3E%3Ccircle cx='18' cy='26' r='3' fill='%23204986'/%3E%3C/svg%3E">
+<meta property="og:title" content="Ground News · Story Graph">
+<meta property="og:description" content="A transparency product, audited claim by claim: its methodology page is mostly honest — and its FAQ, sales page and mission page argue with it. Built from Ground News&#39;s public pages and independent public records, each logged in research.md. Not affiliated with or endorsed by Ground News or Snapwise Inc. Claims the sources state differently are shown standing side by side, not resolved. Verdicts are Claim Checker&#39;s evidence assessments (see the Audit cluster), stated with their limits; the DNIC item is an unresolved lead, not a finding.">
+
+<style>:root{--bg:#ffffff;--surface:#f7f7f7;--text:#0a0a0a;--muted:#595959;--line:rgba(10,10,10,0.16);--accent:#204986;color-scheme:light}</style>
+<style>
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:14px;line-height:1.45;display:flex;flex-direction:column;height:100dvh;overflow:hidden;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:18px 24px 14px;border-bottom:1px solid var(--line);flex:none}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand img{max-height:30px;max-width:120px;display:block}
+.wordmark{margin:0;font-size:19px;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
+.dek{margin:6px 0 0;max-width:640px;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{min-height:36px;padding:0 12px;border:1px solid color-mix(in srgb,var(--text) 22%,transparent);background:color-mix(in srgb,var(--bg) 88%,var(--text));text-transform:uppercase;letter-spacing:.1em;font-size:10px;transition:border-color .15s,color .15s,background .15s}
+.btn:hover,.btn[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:10px 24px;border-bottom:1px solid var(--line);flex:none}
+.search{display:flex;align-items:center;gap:8px;min-width:220px;height:34px;padding:0 10px;border:1px solid color-mix(in srgb,var(--text) 22%,transparent);background:color-mix(in srgb,var(--bg) 88%,var(--text));color:var(--muted)}
+.search:focus-within{border-color:var(--accent)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:none;color:var(--text);font-size:12px}
+.search input::placeholder{color:var(--muted);opacity:.8}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{min-height:28px;padding:0 10px;border:1px solid color-mix(in srgb,var(--text) 22%,transparent);background:none;color:var(--muted);font-size:11px;display:inline-flex;align-items:center;gap:6px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--c,var(--accent));display:inline-block}
+.chip:hover{color:var(--text)}
+.chip[aria-pressed=true]{background:color-mix(in srgb,var(--accent) 14%,transparent);border-color:var(--accent);color:var(--accent)}
+.stories{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-left:auto}
+.stories>span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+main{position:relative;flex:1;min-height:0}
+#graph{display:block;width:100%;height:100%;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#graph.dragging{cursor:grabbing}
+.edge{stroke:var(--text);stroke-opacity:.34;stroke-width:1.2;vector-effect:non-scaling-stroke;transition:stroke-opacity .18s,stroke .18s}
+.edge.inferred{stroke-dasharray:3 5;stroke-opacity:.42}
+.edge.hl{stroke:var(--accent);stroke-opacity:1;stroke-width:2.2;stroke-dasharray:none}
+.edge.inferred.hl{stroke-dasharray:6 5}
+.edge.dim{stroke-opacity:.05}
+.edge-label{font-size:10px;fill:var(--accent);text-anchor:middle;opacity:0;pointer-events:none;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.edge-label.hl{opacity:1}
+.node{cursor:pointer;transition:opacity .18s}
+.node .core{fill:var(--bg);stroke-width:2;transition:stroke-width .15s}
+.node.root .core{stroke-width:0}
+.node .dot{opacity:.9}
+.node .label{font-size:calc(11px * var(--ls,1));fill:var(--text);text-anchor:middle;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.node.root .label{font-weight:700;letter-spacing:.2em;font-size:12px}
+.node .kind{font-size:7.5px;fill:var(--muted);text-anchor:middle;letter-spacing:.14em;text-transform:uppercase;paint-order:stroke;stroke:var(--bg);stroke-width:3px;pointer-events:none;opacity:0;transition:opacity .15s}
+#graph.zoomed .node .kind{opacity:1}
+.node:hover .core,.node:focus-visible .core{stroke-width:3.5}
+.node:focus-visible{outline:none}
+.node:focus-visible .ring{opacity:1}
+.ring{fill:none;stroke:var(--accent);stroke-width:2;opacity:0}
+.node.sel .ring{opacity:1}
+.node.dim{opacity:.16}
+.badge circle{fill:var(--accent)}
+.badge text{fill:var(--bg);font-size:9px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.story-path{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 7;vector-effect:non-scaling-stroke;opacity:.85}
+
+.zoom.right{left:auto;right:20px}
+.zoom{position:absolute;left:20px;bottom:92px;display:flex;flex-direction:column;gap:6px}
+.zoom .btn{width:36px;padding:0;font-size:16px;letter-spacing:0}
+.foot{position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding:10px 24px;font-size:11px;color:var(--muted);pointer-events:none;background:linear-gradient(to top,var(--bg) 40%,transparent)}
+.foot p{margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:flex-end}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.legend svg{width:22px;height:8px}
+.empty{position:absolute;inset:0;display:none;place-items:center;color:var(--muted);pointer-events:none}
+.empty.on{display:grid}
+
+#list{padding:20px 24px 80px}
+#list section{max-width:860px;margin:0 auto 26px}
+#list h2{margin:0 0 10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+#list h2 i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+#list ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.item{display:block;width:100%;text-align:left;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--c)}
+.item:hover,.item:focus-visible{border-color:var(--c)}
+.item b{display:block;font-weight:600}
+.item small{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:10px}
+.item span{display:block;color:var(--muted);margin-top:4px;font-size:13px}
+
+.views{display:flex;border:1px solid color-mix(in srgb,var(--text) 22%,transparent);flex:none}
+.views button{min-height:34px;padding:0 12px;border:0;border-right:1px solid color-mix(in srgb,var(--text) 22%,transparent);background:none;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.views button:last-child{border-right:0}
+.views button:hover{color:var(--text)}
+.views button[aria-pressed=true]{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.pane{position:absolute;inset:0;overflow:auto;display:none}
+.pane.on{display:block}
+
+#timeline{overflow-x:hidden;overflow-y:auto}
+#tl{display:block;width:100%;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.tl-mode{position:absolute;top:8px;right:16px;z-index:2}
+.tl-lane{fill:var(--text);opacity:.04}
+.tl-lane.alt{opacity:.015}
+.tl-lane-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;fill:var(--muted)}
+.tl-tick{stroke:var(--line);stroke-dasharray:2 5}
+.tl-tick-label{font-size:10px;fill:var(--muted);text-anchor:middle}
+.tl-node{cursor:pointer}
+.tl-node text{font-size:11px;fill:var(--text);paint-order:stroke;stroke:var(--bg);stroke-width:3.5px;stroke-linejoin:round}
+.tl-node .tl-when{font-size:9px;fill:var(--muted)}
+.tl-node .tl-dot{stroke:var(--bg);stroke-width:1.5}
+.tl-node.sel .tl-dot{stroke:var(--accent);stroke-width:3}
+.tl-node:focus-visible{outline:none}
+.tl-node:focus-visible .tl-dot{stroke:var(--accent);stroke-width:3}
+.tl-node.dim{opacity:.18}
+.tl-bar{opacity:.5}
+
+#read{padding:28px 24px 140px}
+.read-wrap{max-width:720px;margin:0 auto}
+.read-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:26px}
+.read-wrap h2.rt{font-size:30px;line-height:1.15;margin:0 0 10px}
+.read-wrap .intro{color:var(--muted);font-size:16px;margin:0 0 34px}
+.rstep{position:relative;padding:0 0 34px 54px}
+.rstep::before{content:"";position:absolute;left:15px;top:36px;bottom:2px;width:1px;background:var(--line)}
+.rstep:last-child::before{display:none}
+.rnum{position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--c,var(--accent));color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:13px}
+.rstep .via{font-size:12px;color:var(--muted);margin:0 0 6px}
+.rstep .via em{font-style:normal;color:var(--accent)}
+.rstep h3{margin:0 0 2px;font-size:21px;line-height:1.25}
+.rstep h3 button{background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit}
+.rstep h3 button:hover{color:var(--accent)}
+.rstep .meta{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.rstep p{margin:0 0 10px;font-size:15px}
+.rstep .details{color:var(--muted)}
+.rstep blockquote{margin:0 0 12px;padding:8px 12px;border-left:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);font-size:14px}
+.rstep .rsrc{font-size:12px;color:var(--muted)}
+.rstep .rsrc a{color:var(--accent)}
+
+#outline{padding:22px 24px 110px}
+.ol-wrap{max-width:880px;margin:0 auto}
+.ol-tools{display:flex;gap:8px;margin-bottom:16px}
+.ol-wrap ul{list-style:none;margin:0;padding:0 0 0 22px;border-left:1px solid var(--line)}
+.ol-wrap>ul{border-left:0;padding-left:0}
+.ol-wrap li{margin:2px 0}
+.ol-wrap li.dim{opacity:.35}
+.ol-wrap .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:6px 6px;list-style:none}
+.ol-wrap summary.row{cursor:pointer}
+.ol-wrap summary::-webkit-details-marker{display:none}
+.ol-wrap summary.row::before{content:"+";color:var(--muted);width:12px;flex:none}
+.ol-wrap details[open]>summary.row::before{content:"\2212"}
+.ol-wrap .row i{width:9px;height:9px;border-radius:50%;background:var(--c);align-self:center;flex:none}
+.ol-wrap .via{font-size:11px;color:var(--accent)}
+.ol-wrap .olt{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--text);text-align:left}
+.ol-wrap .olt:hover{color:var(--accent)}
+.ol-wrap small{color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.ol-wrap .olcount{margin-left:auto;font-size:11px;color:var(--muted)}
+.ol-wrap .olbody{padding:0 6px 8px 26px;color:var(--muted);font-size:13px}
+.ol-wrap .olbody p{margin:0 0 4px}
+.ol-wrap .olink{background:none;border:0;padding:0;font:inherit;font-size:12px;color:var(--accent);text-align:left}
+.ol-wrap .olink:hover{text-decoration:underline}
+@media (max-width:760px){.views{width:100%;overflow-x:auto}.views button{flex:1 0 auto;padding:0 10px}#read{padding:20px 16px 150px}.rstep{padding-left:46px}.tl-mode{right:10px}#outline{padding:16px 14px 110px}}
+
+#panel{position:absolute;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);border-left:1px solid var(--line);overflow:auto;padding:22px 22px 40px;transform:translateX(102%);transition:transform .25s ease,visibility 0s linear .25s;z-index:6;box-shadow:-12px 0 40px rgba(0,0,0,.25)}
+#panel.open{transform:none;visibility:visible;transition:transform .25s ease,visibility 0s}
+#panel:not(.open){box-shadow:none;visibility:hidden}
+#panel .close{position:absolute;top:10px;right:10px;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:20px}
+#panel .close:hover{color:var(--accent)}
+#panel .kicker{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#panel .kicker i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+#panel h2{margin:8px 28px 10px 0;font-size:22px;line-height:1.2;overflow-wrap:anywhere}
+#panel p{margin:0 0 12px}
+#panel .details{color:var(--muted)}
+#panel h3{margin:20px 0 8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+#panel blockquote{margin:0 0 12px;padding:8px 12px;border-left:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{padding:2px 8px;border:1px solid var(--line);font-size:11px;color:var(--muted)}
+.links{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.links button{width:100%;text-align:left;background:none;border:1px solid var(--line);padding:8px 10px;display:grid;gap:2px}
+.links button:hover{border-color:var(--accent)}
+.links .rel{font-size:11px;color:var(--muted)}
+.links .rel em{font-style:normal;color:var(--accent)}
+.src{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.src a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+.src a:hover{text-decoration:underline}
+.src small{display:block;color:var(--muted)}
+
+#storybar{z-index:7;position:absolute;left:50%;bottom:54px;transform:translateX(-50%);width:min(560px,calc(100% - 32px));background:var(--surface);border:1px solid var(--accent);padding:10px 14px;display:none;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;z-index:5;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+#storybar.on{display:grid}
+#storybar .t{min-width:0}
+#storybar b{display:block;font-size:13px}
+#storybar span{display:block;color:var(--muted);font-size:12px}
+#storybar .step{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+#storybar .nav{display:flex;gap:6px}
+#storybar .btn{padding:0 10px}
+
+noscript{display:block;padding:24px;max-width:760px}
+
+@media (max-width:760px){
+  header{padding:14px 16px 10px;flex-direction:column}
+  .actions{justify-content:flex-start}
+  .toolbar{padding:8px 16px}
+  .stories{margin-left:0;width:100%}
+  .search{flex:1 1 100%}
+  .chips,.stories{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;padding-bottom:2px}
+  .chips::-webkit-scrollbar,.stories::-webkit-scrollbar{display:none}
+  .chip,.stories>span{flex:none;white-space:nowrap}
+  .dek{font-size:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  header{flex-direction:row;flex-wrap:wrap}
+  .legend,#status{display:none}
+  .wordmark{font-size:16px}
+  .actions .btn{min-height:30px;padding:0 9px}
+  .zoom{bottom:70px}
+  .toolbar{gap:6px}
+  .foot{font-size:10px}
+  .foot{padding:8px 16px}
+  .legend{justify-content:flex-start}
+  .zoom{left:12px}
+  #panel{top:auto;width:100%;height:58%;border-left:0;border-top:1px solid var(--line);transform:translateY(102%)}
+  #panel.open{transform:none}
+  #storybar{bottom:68px;grid-template-columns:1fr;}
+  main.sheet #storybar{bottom:calc(58% + 10px)}
+  #list{padding:14px 16px 90px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div id="logo"></div><div><h1 class="wordmark" id="wordmark"></h1><p class="dek" id="dek"></p></div></div>
+  <div class="actions">
+    <button class="btn" id="btn-fit">Fit</button>
+    <button class="btn" id="btn-reset">Reset</button>
+    <button class="btn" id="btn-fs" hidden aria-pressed="false" title="Full screen (F)">Full screen</button>
+  </div>
+</header>
+<div class="toolbar" role="region" aria-label="Filters">
+  <div class="views" id="views" role="group" aria-label="View"></div>
+  <label class="search"><span class="sr-only">Search nodes</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search nodes  ( / )" autocomplete="off"></label>
+  <div class="chips" id="chips"></div>
+  <div class="stories" id="stories"></div>
+</div>
+<main>
+  <svg id="graph" role="group" aria-label="Story graph. The Read, Outline and List views are linear alternatives."><g id="vp"><g id="edges"></g><g id="edge-labels"></g><path id="story-path" class="story-path" d=""/><g id="nodes"></g><g id="badges"></g></g></svg>
+  <div id="list" class="pane" aria-label="Story list"></div>
+  <div id="timeline" class="pane" aria-label="Timeline"><button class="btn tl-mode" id="tl-mode">Even spacing</button><svg id="tl" role="group" aria-label="Timeline of dated nodes"></svg></div>
+  <div id="read" class="pane" aria-label="Read the story"></div>
+  <div id="outline" class="pane" aria-label="Outline"></div>
+  <div class="empty" id="empty">No nodes match.</div>
+  <div class="zoom" id="zoom"><button class="btn" id="zin" aria-label="Zoom in">+</button><button class="btn" id="zout" aria-label="Zoom out">&minus;</button></div>
+  <div id="storybar" role="region" aria-label="Guided story">
+    <div class="t"><div class="step" id="sb-step"></div><b id="sb-title"></b><span id="sb-sum"></span></div>
+    <div class="nav"><button class="btn" id="sb-prev" aria-label="Previous step">&lsaquo;</button><button class="btn" id="sb-next" aria-label="Next step">&rsaquo;</button><button class="btn" id="sb-exit" aria-label="Exit story">&times;</button></div>
+  </div>
+  <aside id="panel" aria-label="Node details" aria-live="polite"></aside>
+  <div class="foot" id="foot"><div><p id="status"></p><p id="credit"></p></div><div class="legend" id="legend"></div></div>
+</main>
+<noscript><h1>Ground News</h1><p>A transparency product, audited claim by claim: its methodology page is mostly honest — and its FAQ, sales page and mission page argue with it.</p><p>This interactive story graph needs JavaScript. The full content follows.</p><ul><li><strong>Ground News</strong>: A Kitchener, Ontario news-comparison platform that groups coverage of the same story from across the political spectrum and labels each source by bias, factuality and ownership. It is operated by Snapwise Inc. — the store listings say so in as many words.</li><li><strong>See Every Side</strong>: The homepage slogan is the whole pitch in seven words: not one version of a story, but every side of it. The audit&#39;s question was how literally a reader may take it — Ground&#39;s own methodology concedes some sources carry no rating and are not shown in its Bias Bar.</li><li><strong>Think Freely</strong>: The stated mission: well-inform the world by showing readers how information is presented to them, so they can think freely about it. The Mission page is equally plain about what Ground is not — not a news source, not a fact-checker: a guide.</li><li><strong>No Ideology, No Agenda</strong>: Ground asserts neutrality as a principle: no ideology, non-partisan, no political agenda. A claim about motive has no testable referent, so Claim Checker records it as Unverifiable by design — while noting the structural facts that sit beside it elsewhere in this map.</li><li><strong>Subscription, Not Ads</strong>: A founding principle: sell solutions to users, not users to advertisers, and let subscriptions keep the lights on. It is the promise that makes the company&#39;s YouTube sponsorship scale — filed under The Money — worth a second look.</li><li><strong>50,000 Sources, 60,000 a Day</strong>: The headline scale: nearly 60,000 articles a day from over 50,000 sources. No independent audit or measurement of either figure exists; every repetition in press, reviews and listings traces back to Ground itself — one source, however many echoes.</li><li><strong>“Largest in the World”</strong>: Ground&#39;s app-store listing copy calls it the largest news aggregator in the world. The audit found no independent ranking to support the superlative, and — on the pages captured — the claim does not appear on Ground&#39;s own website. That absence rests on one agent&#39;s capture and is flagged as such in the audit.</li><li><strong>Bias: Three Raters, Averaged</strong>: The core mechanism is real: Ground does not rate outlets itself. Its bias rating averages the published ratings of three independent monitors — AllSides, Ad Fontes Media and Media Bias/Fact Check — and the Ground team, by its own FAQ, takes no part in evaluating them.</li><li><strong>Three Scales, No Formula</strong>: The three raters measure differently: Ad Fontes scores bias −42 to +42, Media Bias/Fact Check −10 to +10 (U. S. -centric), and AllSides publishes categories plus a −6 to +6 meter. An independent explainer had to invent its own rescaling to do the same job.</li><li><strong>Factuality: Two Raters</strong>: On its methodology page, Ground states factuality correctly: it averages two systems, Ad Fontes Media and Media Bias/Fact Check — the two raters that actually produce a factuality-type score. The Columbia Journalism Review confirms the same split independently. Claim Checker: Confirmed, as stated on this page.</li><li><strong>Reliability, Relabelled</strong>: A nuance the validators added: Ad Fontes calls its axis “reliability” — a composite of veracity, expression and headline accuracy — not “factuality.” Ground&#39;s label renames that composite.</li><li><strong>Publications, Not Articles</strong>: The disclosure exists, on the methodology page: scores describe a publication as a whole, not the article in front of you. Critics argue the “Factuality” label nevertheless travels into the product beside individual stories, where the disclosure does not.</li><li><strong>Blindspot</strong>: The signature feature: stories one side of the spectrum covers heavily while the other barely touches them, surfaced in a dedicated feed. The mechanism exists and operates as described. What it does to readers is a separate, thinner record — see Blindspot, Tested Once.</li><li><strong>A Formula, Half-Published</strong>: Ground publishes a qualifying formula — for a Blindspot for the Left: fewer than 10 left-leaning sources, right coverage at or above 33%, a proportional condition, and a cap on low-factuality coverage. No symmetric formula for the Right appears on the methodology page.</li><li><strong>Blindspot, Tested Once</strong>: The only peer-reviewed efficacy test found: Bram (PLOS ONE, 2024) ran the weekly Blindspot Report newsletter — not the in-app feed — with over 1,200 subscribers. Three of four stories did not change minds; one reduced polarization in context. He disclosed working with Ground to run the experiment, unpaid.</li><li><strong>Ownership, Hand-Coded</strong>: The one dataset Ground builds itself: ownership categories for news outlets, researched and hand-coded in-house. The count — 2,276 outlets — is the company&#39;s own, and no independent audit of the dataset exists.</li><li><strong>The FAQ Says Three</strong>: Standing opposite the methodology page: Ground&#39;s FAQ — and the FAQ on its Subscribe page — say bias and factuality ratings are both averaged from three organisations, AllSides included.</li><li><strong>AllSides Rates No Accuracy</strong>: The referee in the factuality dispute is one of the raters itself. AllSides states, in its own materials, that it does not rate accuracy or credibility at all — it rates perspective only.</li><li><strong>“We Don’t Use Algorithms”</strong>: The sales page&#39;s blanket form: Ground does not use algorithms to shape what you see; you choose the stories. The same page lists personalised story recommendations as a feature. Claim Checker: Contradicted — by the company&#39;s own FAQ, standing opposite.</li><li><strong>My Feed Is Algorithmic</strong>: The FAQ&#39;s own description of the product: Top Stories are picked by an editorial team, and the My Feed tab is a personalised collection, algorithmically curated from what you say you follow and what you actually read.</li><li><strong>10,000+ Five-Star Reviews</strong>: One floor, published on the homepage hero — and in Ground&#39;s own Trustpilot company description, which gives the same “over 10,000 5-star reviews” for the app stores combined. Stores publish ratings, not reviews, and Ground publishes no basis or date for the figure.</li><li><strong>53,000+ Five-Star Reviews</strong>: The other floor, on the Subscribe page the same day. The audit&#39;s first draft called the pair a contradiction; a validator caught the logic — both numbers carry a “+”, so if the true count is at least 53,000, the 10,000+ claim is also true. Corrected verdict: Partially corroborated.</li><li><strong>“No Institutional Investors”</strong>: The Mission page&#39;s formulation: not funded by a media company, big tech or institutional investors — supported by subscribers and a small group of individual investors. The FAQ repeats it: a handful of mission-aligned independent individual investors, no ties to corporate media, big tech or government.</li><li><strong>The Investor Record</strong>: The funding databases name venture and institutional-type investors: Techstars and Techstars Ventures, Right Side Capital Management, Something Good Ventures, 37 Angels, Blue Lagoon Capital, Velocity and others.</li><li><strong>“First Institutional Investor”</strong>: The strongest single document in the money thread, surfaced by a validator after the audit under-built it: the University of Waterloo&#39;s own release for Velocity Fund II says the fund aims to be the first institutional investor in promising startups — and names Ground News among the companies that have benefited from</li><li><strong>Four Totals, $20K–$1.01M</strong>: Ask four databases what Ground raised and get four answers: $20K (Tracxn), $170K (BounceWatch), $340K (CB Insights), $1. 01M (PitchBook). The databases conflate the predecessor company&#39;s raises with Ground&#39;s, and an undisclosed May 2025 venture round post-dates the frozen totals.</li><li><strong>The DNIC Lead — Open</strong>: An unresolved lead, modelled as one — not a finding. CB Insights lists a “Digital News Innovation Challenge” among Ground&#39;s investors, and a Carleton University journal article documents Ground&#39;s participation in that programme.</li><li><strong>#1 Most-Sponsored on YouTube</strong>: In the first half of 2025, Ground News was the most-sponsored brand on YouTube in Gospel Stats&#39; sample — first by paid creator integrations and first by views. The qualification matters: English-language channels, videos reaching 25,000 views within seven days; not a full-year title and not a ranking by spend.</li><li><strong>Who Pays the Raters?</strong>: Three raters, three different relationships, averaged into one adjective — “independent.” On the Columbia Journalism Review&#39;s record: Ad Fontes is paid by Ground; Media Bias/Fact Check&#39;s founder said there is no agreement; AllSides&#39; COO said its ratings are used without formal permission and without compensation.</li><li><strong>A Director&#39;s Other Desks</strong>: A board fact, stated as a fact and no further: Manuel Mattke sits in Snapwise&#39;s corporate record as a director. He is president and COO of Opportunity Education, the foundation Joe Ricketts founded, and an advisory-board member of Ricketts-owned Straight Arrow News.</li><li><strong>The Straight Arrow Partnership</strong>: A structural, checkable tie: Straight Arrow News — a Ricketts-owned outlet that sells the same “unbiased, without agenda” positioning — operates in partnership with Ground News for some of its news output. No terms are public.</li><li><strong>Snapwise Inc., 2014</strong>: The legal company predates the product by years: Snapwise Inc. was federally incorporated in Canada on 26 March 2014, and remains the active corporation behind Ground News, with Harleen Kaur Jolly and Sukhsagar Singh Jolly among its directors.</li><li><strong>Before Ground: uCiC</strong>: The predecessor: before Ground News, the siblings built uCiC, an eyewitness-photo app, inside the same company. It matters to this story for one reason — the earliest detailed telling of Harleen Kaur&#39;s NASA story is a January 2017 profile of uCiC, where she is the interview subject.</li><li><strong>“Founded in 2017”</strong>: Ground&#39;s About page says the siblings founded the company in 2017, out of Waterloo&#39;s Velocity incubator. The University of Waterloo&#39;s news service repeats 2017 — the strongest third-party repetition, though founder-sourced and not contemporary. Claim Checker: Partially corroborated.</li><li><strong>Launch: 27 April 2018</strong>: The first public product is independently dated: the trademark record gives first use of the Ground News name as 31 March 2018, the apps released that April, and Ground&#39;s own History page enters the launch under 27 April 2018. Whatever “founded” means, something a user could download exists from this spring.</li><li><strong>Ground News Pro, 2020</strong>: The current comparison platform — Pro, with Blindspot — launched on 15 January 2020, per contemporary coverage. Ground&#39;s own launch post that month quoted 40,000 outlets and ~30,000 stories a day: the baseline from which the headline scale later grew.</li><li><strong>Kaur and NASA</strong>: The founder biography: an aerospace-engineering degree, a career started at NASA, work on the Pluto-bound New Horizons spacecraft. No NASA, Johns Hopkins APL or university record naming her was found; every profile repeats near-identical supplied wording that traces to Kaur herself. Claim Checker: Self-reported only.</li><li><strong>Sukh Singh</strong>: The co-founder&#39;s biography as Ground tells it: consulting at IBM and KPMG, then Bain &amp; Company, then his own company, Watchful; a Waterloo BA and an Oxford master&#39;s in Decision Science. Nothing here asserts it is wrong; it is untested.</li><li><strong>1M+ Downloads — a Bracket</strong>: The scale claim that does check out, at bracket level: Google Play shows Ground News past one million installs — a bracket, not a count — with roughly 33,000 ratings averaging 4. 55. Apple&#39;s US listing shows 4. Claim Checker: Confirmed, as a bracket.</li><li><strong>The Claim Checker Standard</strong>: The instrument: claims captured verbatim before analysis; sources grouped by independence, so fourteen echoes of one announcement count as one source; a contradiction pass against every material thesis; and exactly five verdicts — Confirmed, Partially corroborated, Self-reported only, Unverifiable by design,</li><li><strong>The Audit: 16 Atoms</strong>: On 13 November 2026, Claim Checker ran Ground News through the Standard: every public claim that mattered, atomised — scale, ratings, algorithms, founding, biography, funding, reviews, ownership, neutrality — and tested against records independent of the company. Ground&#39;s own pages were captured live the same day.</li><li><strong>The Corrected Tally</strong>: After validation, the count stands: 3 Confirmed, 4 Partially corroborated, 4 Self-reported only, 2 Unverifiable by design, 3 Contradicted — sixteen atoms, one verdict each. The three Contradicted are the load-bearing ones: the FAQ&#39;s factuality, the sales page&#39;s algorithms, the mission page&#39;s investors.</li><li><strong>The One-Line Finding</strong>: Ground News built a transparency product whose own transparency claims are its weakest surface: its methodology page is mostly honest, and its FAQ, sales page and mission page contradict that methodology page on factuality, algorithms and funding.</li><li><strong>Generator ≠ Validator</strong>: The audit was then audited: two validators who did not generate it re-checked every atom against the primary sources, hunting for errors. Both filed “Cleared with exceptions.”</li><li><strong>Corrections Beside Errors</strong>: The two errors are kept in the record, not edited away. First: the review-count pair was called Contradicted — a plus-floor logic error, since 53,000+ makes 10,000+ true, not false. Second: the 83-cents-a-month tier was called a legacy price — it is a live tier, and the pricing atom is Confirmed as stated.</li><li><strong>Accountability, Graded Weak</strong>: How the company answers when checked: graded weak, on a fair record. It gave CJR a quotable reason rather than silence; it answers users publicly and substantively, on Trustpilot and its store listings, including on its ratings method.</li><li><strong>One Source, Many Echoes</strong>: The audit&#39;s press-laundering test, and its most quietly damning result: the 50,000 sources, the 60,000 articles, the 2017 founding, the NASA biography and the “largest aggregator” superlative appear in outlet after outlet — and grouped by independence they are one source, Ground News, repeated.</li><li><strong>What We Would Ask Next</strong>: The audit ends open, on purpose. Fifteen follow-up questions in five threads — the money (DNIC&#39;s full terms; a raise-by-raise reconstruction), the product in hand (does “Factuality” sit beside individual stories? ), the method (can anyone rebuild the composite? Each question names what it could move.</li></ul></noscript>
+
+<script type="application/json" id="theme-data">{"brandSources":[{"from":"https://ground.news/ via scripts/brand-probe.mjs (2026-11-13)","note":"Copied from the site's own CSS tokens: --background #ffffff, --card #f7f7f7, --foreground #0a0a0a. Ground's identity is essentially monochrome — black ink on white — and the theme keeps it that way.","what":"bg #ffffff, surface #f7f7f7, text #0a0a0a"},{"from":"https://ground.news/ CSS tokens (probe, 2026-11-13)","note":"The site's --muted-foreground is #737373; darkened to #595959 so secondary text clears 4.5:1 on the white canvas with margin. Recorded as a deliberate adjustment, not a brand value.","what":"muted #595959"},{"from":"https://ground.news/ via scripts/brand-probe.mjs (2026-11-13)","note":"Judgement call for a monochrome brand, per playbook: the signature colour was taken from the product's own data colours — the deep blue of its bias bar / chart palette (probe accent candidate, x9 uses), the left-hand colour of the Left–Center–Right bar that is the product's signature visual. Contrast on white is about 9:1.","what":"accent #204986"},{"from":"editorial choice, recorded here","note":"Built from the site's own palette family, not a rainbow: promise in the bias-bar blue #204986, method in the site's chart blue #2563ef (--chart-3), contradictions in the bias-bar deep red #802727 (probe accent candidate), money in a darkened form of the site's tan/gold #d1bd91 (its centre-bar colour, darkened to clear 3:1 on white), company in the site's own neutral grey #525252, and the audit — Claim Checker's cluster, not Ground's — in a deep cyan neighbour of the chart blues. Each clears 3:1 on #ffffff.","what":"cluster colours"},{"from":"https://ground.news/ via scripts/brand-probe.mjs (2026-11-13)","note":"The site uses proprietary faces (universalSans / sohneSans, Söhne-style grotesques) that are not on Google Fonts. Approximated with the system-ui grotesque stack the site itself ships as a fallback family; no webfont. The page reads identically with no network font.","what":"font"},{"from":"playbook/4-brand.md; task instruction","note":"Ground News's logo is deliberately not embedded. This is an unaffiliated independent study by Claim Checker / TeamBotics, and the disclaimer in story.json says so. The wordmark is plain text.","what":"no logo"}],"clusters":{"audit":"#0e7490","company":"#525252","contradictions":"#802727","method":"#2563ef","money":"#7a5c14","promise":"#204986"},"colors":{"accent":"#204986","bg":"#ffffff","line":"rgba(10,10,10,0.16)","muted":"#595959","surface":"#f7f7f7","text":"#0a0a0a"},"font":{"body":"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"},"mode":"light","name":"Ground News — monochrome ink, bias-bar blue","schemaVersion":1,"wordmark":{"letterSpacing":"0.02em","text":"Ground News"}}</script>
+<script type="application/json" id="story-data">{"schemaVersion":1,"title":"Ground News","subject":{"name":"Ground News","kind":"company","url":"https://ground.news"},"tagline":"A transparency product, audited claim by claim: its methodology page is mostly honest — and its FAQ, sales page and mission page argue with it.","root":"ground-news","credit":"An independent StoryTeller study by Claim Checker / TeamBotics, built from the Claim Checker audit of Ground News (13 November 2026) and the public sources it cites.","disclaimer":"Built from Ground News's public pages and independent public records, each logged in research.md. Not affiliated with or endorsed by Ground News or Snapwise Inc. Claims the sources state differently are shown standing side by side, not resolved. Verdicts are Claim Checker's evidence assessments (see the Audit cluster), stated with their limits; the DNIC item is an unresolved lead, not a finding.","generated":{"date":"2026-11-13","by":"Muse, for Claim Checker / TeamBotics"},"clusters":[{"id":"promise","label":"The Promise"},{"id":"method","label":"The Method"},{"id":"contradictions","label":"The Contradictions"},{"id":"money","label":"The Money"},{"id":"company","label":"The Company"},{"id":"audit","label":"The Audit"}],"sources":[{"id":"gn-home","title":"Ground News — homepage","url":"https://ground.news/","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-about","title":"Ground News — About","url":"https://ground.news/about","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-mission","title":"Ground News — Mission","url":"https://ground.news/mission","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-rating","title":"Ground News — Rating System (methodology)","url":"https://ground.news/rating-system","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-faq","title":"Ground News — Frequently Asked Questions","url":"https://ground.news/frequently-asked-questions","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-subscribe","title":"Ground News — Subscribe","url":"https://ground.news/subscribe","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-history","title":"Ground News — History, 2018","url":"https://ground.news/history/2018","publisher":"Ground News","accessed":"2026-11-13"},{"id":"gn-blindspot","title":"Ground News — Blindspot feed","url":"https://ground.news/blindspot","publisher":"Ground News","accessed":"2026-11-13"},{"id":"allsides","title":"AllSides — Media Bias Chart and FAQ","url":"https://www.allsides.com/media-bias/media-bias-chart","publisher":"AllSides","accessed":"2026-11-13"},{"id":"adfontes","title":"Ad Fontes Media — Methodology","url":"https://adfontesmedia.com/methodology/","publisher":"Ad Fontes Media","accessed":"2026-11-13"},{"id":"mbfc","title":"Media Bias/Fact Check — Methodology","url":"https://mediabiasfactcheck.com/methodology/","publisher":"Media Bias/Fact Check","accessed":"2026-11-13"},{"id":"cjr","title":"“The Business of Balance” — Columbia Journalism Review, Sep 2025","url":"https://www.cjr.org/analysis/the-business-of-balance-ground-news.php","publisher":"Columbia Journalism Review","accessed":"2026-11-13"},{"id":"corp-canada","title":"Corporations Canada — Snapwise Inc., Corp. No. 883500-4","url":"https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=8835004","publisher":"Corporations Canada / ISED","accessed":"2026-11-13"},{"id":"pitchbook","title":"PitchBook — Ground News company profile","url":"https://pitchbook.com/profiles/company/340782-22","publisher":"PitchBook","accessed":"2026-11-13"},{"id":"cbinsights","title":"CB Insights — Ground News company profile","url":"https://www.cbinsights.com/company/ground-1","publisher":"CB Insights","accessed":"2026-11-13"},{"id":"tracxn","title":"Tracxn — Ground News company profile","url":"https://tracxn.com/d/companies/ground/__HoPNp-FNqJJq2NTYGg_UHbTM6GR6Tkb5t6pxCWGlAmo","publisher":"Tracxn","accessed":"2026-11-13"},{"id":"rightside","title":"Right Side Capital Management — By the Numbers","url":"https://www.rightsidecapital.com/by-the-numbers","publisher":"Right Side Capital Management","accessed":"2026-11-13"},{"id":"uw-velocity","title":"University of Waterloo — Velocity Fund II closes financing round","url":"https://uwaterloo.ca/news/media/velocity-fund-ii-closes-financing-round","publisher":"University of Waterloo","accessed":"2026-11-13"},{"id":"uw-2017","title":"University of Waterloo — Combatting misinformation","url":"http://uwaterloo.ca/news/combatting-misinformation","publisher":"University of Waterloo","accessed":"2026-11-13"},{"id":"play-store","title":"Google Play — Ground News (Snapwise Inc. dba Ground News)","url":"https://play.google.com/store/apps/details?id=com.checkitt","publisher":"Google Play","accessed":"2026-11-13"},{"id":"apple-store","title":"Apple App Store — Ground News (Snapwise Inc.)","url":"https://apps.apple.com/us/app/ground-news/id1324203419","publisher":"Apple App Store","accessed":"2026-11-13"},{"id":"plosone","title":"Bram (2024) — Blindspot experiment, PLOS ONE 19(2)","url":"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0297808","publisher":"PLOS ONE","accessed":"2026-11-13"},{"id":"tubefilter","title":"Tubefilter — Gospel Stats YouTube Sponsorship Landscape Report, H1 2025","url":"https://www.tubefilter.com/2025/10/22/gospel-stats-youtube-sponsorship-landscape-report/","publisher":"Tubefilter","accessed":"2026-11-13"},{"id":"malone","title":"“Ground News and the Factuality Scam” — Malone News, 22 Aug 2026","url":"https://www.malone.news/p/ground-news-and-the-factuality-scam","publisher":"Malone News","accessed":"2026-11-13"},{"id":"carleton","title":"Guida — Facts & Frictions, Fall 2021 (Digital News Innovation Challenge)","url":"https://ojs.library.carleton.ca/index.php/ff/issue/download/331/173","publisher":"Carleton University","accessed":"2026-11-13"},{"id":"story-exchange","title":"The Story Exchange — profile of Harleen Kaur, 10 Jan 2017","url":"https://thestoryexchange.org/woman-reaching-startup-stars/","publisher":"The Story Exchange","accessed":"2026-11-13"},{"id":"mediavillage","title":"MediaVillage — Harleen Kaur on addressing media bias, 18 Feb 2020","url":"https://www.mediavillage.com/article/ground-news-founder-harleen-kaur-on-addressing-media-bias/amp/","publisher":"MediaVillage","accessed":"2026-11-13"},{"id":"producthunt","title":"Product Hunt — Ground News Pro launch post, Jan 2020","url":"https://www.producthunt.com/p/ground-news-from-the-source/ground-news-pro","publisher":"Product Hunt (Ground News post)","accessed":"2026-11-13"},{"id":"trustpilot","title":"Trustpilot — Ground News company profile and reviews","url":"https://nz.trustpilot.com/review/ground.news","publisher":"Trustpilot","accessed":"2026-11-13"},{"id":"opportunity-ed","title":"Opportunity Education — About (leadership)","url":"https://opportunityeducation.org/us/about/","publisher":"Opportunity Education","accessed":"2026-11-13"},{"id":"literatemachine","title":"Literate Machine — “Is Ground News a Right-Wing Psy-Op?”, 16 Aug 2026","url":"https://literatemachine.com/2026/08/16/is-ground-news-a-right-wing-psy-op/","publisher":"Literate Machine","accessed":"2026-11-13"},{"id":"cc-standard","title":"The Claim Checker Standard","url":"https://github.com/nickhilster/claim-checker/blob/main/docs/STANDARD.md","publisher":"Claim Checker / TeamBotics","accessed":"2026-11-13"},{"id":"cc-record","title":"Claim Checker audit of Ground News — 16 atoms, seven tests, validator errata (13 Nov 2026)","url":"https://github.com/nickhilster/claim-checker","publisher":"Claim Checker / TeamBotics","accessed":"2026-11-13"}],"nodes":[{"id":"ground-news","title":"Ground News","type":"company","cluster":"company","featured":true,"summary":"A Kitchener, Ontario news-comparison platform that groups coverage of the same story from across the political spectrum and labels each source by bias, factuality and ownership. It is operated by Snapwise Inc. — the store listings say so in as many words.","evidence":"Google Play developer: “Snapwise Inc.(dba Ground News)”, Kitchener, Ontario","when":"Kitchener, Ontario, Canada","sources":["play-store","corp-canada"],"themes":["subject"]},{"id":"slogan","title":"See Every Side","type":"claim","cluster":"promise","featured":true,"summary":"The homepage slogan is the whole pitch in seven words: not one version of a story, but every side of it. The audit's question was how literally a reader may take it — Ground's own methodology concedes some sources carry no rating and are not shown in its Bias Bar.","evidence":"“See every side of every news story” — Ground News homepage","sources":["gn-home","gn-rating"],"themes":["promise"]},{"id":"mission-think-freely","title":"Think Freely","type":"concept","cluster":"promise","summary":"The stated mission: well-inform the world by showing readers how information is presented to them, so they can think freely about it. The Mission page is equally plain about what Ground is not — not a news source, not a fact-checker: a guide.","evidence":"“Ground News isn't a fact-checker, because we believe in empowerment, not enablement.” — Mission","sources":["gn-mission","gn-about"],"themes":["promise"]},{"id":"neutrality-claim","title":"No Ideology, No Agenda","type":"claim","cluster":"promise","summary":"Ground asserts neutrality as a principle: no ideology, non-partisan, no political agenda. A claim about motive has no testable referent, so Claim Checker records it as Unverifiable by design — while noting the structural facts that sit beside it elsewhere in this map.","evidence":"“Ground News has no ideology, it is non-partisan” — Mission; “Ground has no political agenda” — FAQ","sources":["gn-mission","gn-faq"],"themes":["promise","verdict: unverifiable by design"]},{"id":"subscription-not-ads","title":"Subscription, Not Ads","type":"claim","cluster":"promise","summary":"A founding principle: sell solutions to users, not users to advertisers, and let subscriptions keep the lights on. It is the promise that makes the company's YouTube sponsorship scale — filed under The Money — worth a second look.","evidence":"“We prefer to make our money by selling solutions to our users” — Mission, principle 2–3","sources":["gn-mission"],"themes":["promise","business model"]},{"id":"scale-claim","title":"50,000 Sources, 60,000 a Day","type":"claim","cluster":"promise","summary":"The headline scale: nearly 60,000 articles a day from over 50,000 sources. No independent audit or measurement of either figure exists; every repetition in press, reviews and listings traces back to Ground itself — one source, however many echoes.","evidence":"“nearly 60,000 news articles from over 50,000 different news sources” — About","sources":["gn-about","gn-faq","producthunt"],"themes":["numbers","verdict: self-reported only"],"details":"Ground's own January 2020 launch post said 40,000 sources and ~30,000 stories, so the growth itself is plausible; the numbers remain the company's own."},{"id":"largest-aggregator","title":"“Largest in the World”","type":"claim","cluster":"promise","summary":"Ground's app-store listing copy calls it the largest news aggregator in the world. The audit found no independent ranking to support the superlative, and — on the pages captured — the claim does not appear on Ground's own website. That absence rests on one agent's capture and is flagged as such in the audit.","evidence":"“Ground News is the largest news aggregator in the world” — Google Play listing copy","sources":["play-store"],"themes":["numbers","verdict: self-reported only"]},{"id":"bias-three-raters","title":"Bias: Three Raters, Averaged","type":"method","cluster":"method","featured":true,"summary":"The core mechanism is real: Ground does not rate outlets itself. Its bias rating averages the published ratings of three independent monitors — AllSides, Ad Fontes Media and Media Bias/Fact Check — and the Ground team, by its own FAQ, takes no part in evaluating them.","evidence":"“Our Bias rating averages the following 3 independent news monitoring organizations” — Rating System","sources":["gn-rating","gn-faq","allsides","adfontes","mbfc"],"themes":["method"],"details":"Claim Checker: Partially corroborated — the structure checks out; the computation cannot be re-run (see Three Scales, No Formula)."},{"id":"bias-scales","title":"Three Scales, No Formula","type":"method","cluster":"method","summary":"The three raters measure differently: Ad Fontes scores bias −42 to +42, Media Bias/Fact Check −10 to +10 (U. S. -centric), and AllSides publishes categories plus a −6 to +6 meter. An independent explainer had to invent its own rescaling to do the same job.","evidence":"Ad Fontes bias −42 to +42; MBFC −10 to +10; AllSides Media Bias Meter −6 to +6","sources":["adfontes","mbfc","allsides","gn-rating"],"themes":["method","limits"],"details":"Ground says each source's overall position is a composite of the relative positions — and publishes no mapping or formula, so no reader can reproduce a single rating."},{"id":"factuality-two-raters","title":"Factuality: Two Raters","type":"method","cluster":"method","featured":true,"summary":"On its methodology page, Ground states factuality correctly: it averages two systems, Ad Fontes Media and Media Bias/Fact Check — the two raters that actually produce a factuality-type score. The Columbia Journalism Review confirms the same split independently. Claim Checker: Confirmed, as stated on this page.","evidence":"“The Factuality rating averages the following 2 trusted rating systems” — Rating System","sources":["gn-rating","cjr"],"themes":["method","verdict: confirmed"]},{"id":"reliability-relabel","title":"Reliability, Relabelled","type":"method","cluster":"method","summary":"A nuance the validators added: Ad Fontes calls its axis “reliability” — a composite of veracity, expression and headline accuracy — not “factuality.” Ground's label renames that composite.","evidence":"Ad Fontes rates “reliability” (0–64) and bias (−42 to +42) — its own methodology","sources":["adfontes","gn-rating"],"themes":["method","limits"],"details":"The score Ground shows is real; the word on it is Ground's choice, and it sounds more like a verdict on facts than the rater's own word does."},{"id":"publication-not-article","title":"Publications, Not Articles","type":"method","cluster":"method","featured":true,"summary":"The disclosure exists, on the methodology page: scores describe a publication as a whole, not the article in front of you. Critics argue the “Factuality” label nevertheless travels into the product beside individual stories, where the disclosure does not.","evidence":"“Scores apply to each publication as a whole, not to their individual articles.” — Rating System","sources":["gn-rating","malone"],"themes":["method","disclosure"],"details":"The audit did not verify the in-product placement — that is Round 2, Question 7 — and records the criticism as a critic's claim, not a finding."},{"id":"blindspot","title":"Blindspot","type":"method","cluster":"method","summary":"The signature feature: stories one side of the spectrum covers heavily while the other barely touches them, surfaced in a dedicated feed. The mechanism exists and operates as described. What it does to readers is a separate, thinner record — see Blindspot, Tested Once.","evidence":"“disproportionately covered by media sources on one side of the political spectrum” — Rating System","sources":["gn-rating","gn-blindspot"],"themes":["method"]},{"id":"blindspot-formula","title":"A Formula, Half-Published","type":"method","cluster":"method","summary":"Ground publishes a qualifying formula — for a Blindspot for the Left: fewer than 10 left-leaning sources, right coverage at or above 33%, a proportional condition, and a cap on low-factuality coverage. No symmetric formula for the Right appears on the methodology page.","evidence":"Blindspot for the Left: “Fewer than 10 Left-leaning sources reporting”; “Right-leaning coverage is greater than or equal to 33%”","sources":["gn-rating"],"themes":["method","limits"],"details":"Publishing any formula puts Ground ahead of most comparable products; publishing half of one is the honest seam. The specifics rest on the audit generator's capture and are flagged for re-capture."},{"id":"blindspot-test","title":"Blindspot, Tested Once","type":"record","cluster":"method","start":"2024-02-16","summary":"The only peer-reviewed efficacy test found: Bram (PLOS ONE, 2024) ran the weekly Blindspot Report newsletter — not the in-app feed — with over 1,200 subscribers. Three of four stories did not change minds; one reduced polarization in context. He disclosed working with Ground to run the experiment, unpaid.","evidence":"“three of the four stories did not change people's minds” — Bram, PLOS ONE (2024)","when":"Published 16 February 2024","sources":["plosone","cjr"],"themes":["evidence","verdict: partially corroborated"],"details":"Bram's own conclusion was warmer than the audit's first framing: the approach is “promising.”"},{"id":"ownership-dataset","title":"Ownership, Hand-Coded","type":"method","cluster":"method","summary":"The one dataset Ground builds itself: ownership categories for news outlets, researched and hand-coded in-house. The count — 2,276 outlets — is the company's own, and no independent audit of the dataset exists.","evidence":"“hand-coded ownership data for 2,276 news outlets and counting” — Rating System","sources":["gn-rating"],"themes":["method","verdict: self-reported only"],"details":"How much of the rated universe that covers is, on an honest base, unknown: the audit's first draft divided it by the 50,000-source corpus, and the validators made it label that an inference and withdraw the payload."},{"id":"faq-three-raters","title":"The FAQ Says Three","type":"claim","cluster":"contradictions","featured":true,"summary":"Standing opposite the methodology page: Ground's FAQ — and the FAQ on its Subscribe page — say bias and factuality ratings are both averaged from three organisations, AllSides included.","evidence":"“Bias and factuality ratings are averaged from the published ratings from three” organisations — FAQ","sources":["gn-faq","gn-subscribe"],"themes":["contradiction","verdict: contradicted"],"details":"Read collectively, the sentence could mean the three between them supply both ratings; read naturally, as every secondary source reads it, it says each rating averages all three. The audit records the ambiguity — and the verdict stands on the natural reading plus the conflict with Ground's own Rating System page."},{"id":"allsides-no-accuracy","title":"AllSides Rates No Accuracy","type":"record","cluster":"contradictions","featured":true,"summary":"The referee in the factuality dispute is one of the raters itself. AllSides states, in its own materials, that it does not rate accuracy or credibility at all — it rates perspective only.","evidence":"“We don't rate accuracy or credibility, because we're not a Ministry of Truth.” — AllSides","sources":["allsides"],"themes":["evidence","contradiction"],"details":"A factuality average cannot include a rater that produces no factuality rating, which is why this node stands beside both versions of Ground's claim."},{"id":"subscribe-no-algorithms","title":"“We Don’t Use Algorithms”","type":"claim","cluster":"contradictions","summary":"The sales page's blanket form: Ground does not use algorithms to shape what you see; you choose the stories. The same page lists personalised story recommendations as a feature. Claim Checker: Contradicted — by the company's own FAQ, standing opposite.","evidence":"“We don't use algorithms to shape what you see. You choose the stories.” — Subscribe","sources":["gn-subscribe"],"themes":["contradiction","verdict: contradicted"]},{"id":"myfeed-algorithmic","title":"My Feed Is Algorithmic","type":"record","cluster":"contradictions","summary":"The FAQ's own description of the product: Top Stories are picked by an editorial team, and the My Feed tab is a personalised collection, algorithmically curated from what you say you follow and what you actually read.","evidence":"“algorithmically curated based on stated and observed reading behaviors” — FAQ, on My Feed","sources":["gn-faq"],"themes":["contradiction","evidence"],"details":"The narrower claim made elsewhere — freedom from engagement-maximising algorithms — is a different claim, and on this record it is self-reported only."},{"id":"reviews-10k","title":"10,000+ Five-Star Reviews","type":"claim","cluster":"contradictions","summary":"One floor, published on the homepage hero — and in Ground's own Trustpilot company description, which gives the same “over 10,000 5-star reviews” for the app stores combined. Stores publish ratings, not reviews, and Ground publishes no basis or date for the figure.","evidence":"“over 10,000 5-star reviews in the App Store and Play Store” — Ground's Trustpilot description","sources":["gn-home","trustpilot"],"themes":["numbers","contradiction"]},{"id":"reviews-53k","title":"53,000+ Five-Star Reviews","type":"claim","cluster":"contradictions","summary":"The other floor, on the Subscribe page the same day. The audit's first draft called the pair a contradiction; a validator caught the logic — both numbers carry a “+”, so if the true count is at least 53,000, the 10,000+ claim is also true. Corrected verdict: Partially corroborated.","evidence":"“50,000+ sources • 53,000+ 5-star reviews” — Subscribe (capture, 13 Nov 2026)","sources":["gn-subscribe","play-store"],"themes":["numbers","verdict: partially corroborated"],"details":"A stale floor is drift, not contradiction, and Play's own histogram (78% of ~33K ratings are five stars) makes a combined ~53K plausible. The 53,000+ figure itself rests on the audit generator's capture alone."},{"id":"no-institutional-claim","title":"“No Institutional Investors”","type":"claim","cluster":"money","featured":true,"summary":"The Mission page's formulation: not funded by a media company, big tech or institutional investors — supported by subscribers and a small group of individual investors. The FAQ repeats it: a handful of mission-aligned independent individual investors, no ties to corporate media, big tech or government.","evidence":"“We are not funded by a media company, big tech or institutional investors.” — Mission","sources":["gn-mission","gn-faq"],"themes":["money","verdict: contradicted"],"details":"Read the investor record standing opposite before deciding what this sentence is worth."},{"id":"investor-record","title":"The Investor Record","type":"record","cluster":"money","summary":"The funding databases name venture and institutional-type investors: Techstars and Techstars Ventures, Right Side Capital Management, Something Good Ventures, 37 Angels, Blue Lagoon Capital, Velocity and others.","evidence":"PitchBook lists 10 investors; CB Insights names “Techstars Ventures… Right Side Capital Management and 5 more”","sources":["pitchbook","cbinsights","rightside"],"themes":["money","evidence"],"details":"Right Side Capital describes itself, on its own site, as frequently the first institutional investor a founder has had. The letter of “individual investors only” does not survive this record; the amounts, though, are pre-seed small — no funder on it is plausibly buying control."},{"id":"velocity-first-institutional","title":"“First Institutional Investor”","type":"record","cluster":"money","summary":"The strongest single document in the money thread, surfaced by a validator after the audit under-built it: the University of Waterloo's own release for Velocity Fund II says the fund aims to be the first institutional investor in promising startups — and names Ground News among the companies that have benefited from","evidence":"Velocity Fund II “aims to be the first institutional investor” — and names Ground News — UWaterloo","sources":["uw-velocity","pitchbook"],"themes":["money","evidence"],"details":"its investments. A self-described institutional investor, naming its investment in Ground, in a primary source."},{"id":"totals-spread","title":"Four Totals, $20K–$1.01M","type":"record","cluster":"money","summary":"Ask four databases what Ground raised and get four answers: $20K (Tracxn), $170K (BounceWatch), $340K (CB Insights), $1. 01M (PitchBook). The databases conflate the predecessor company's raises with Ground's, and an undisclosed May 2025 venture round post-dates the frozen totals.","evidence":"Totals on record: $20K / $170K / $340K / $1.01M across Tracxn, BounceWatch, CB Insights, PitchBook","sources":["tracxn","cbinsights","pitchbook"],"themes":["money","numbers"],"details":"The validators were precise about whose failure this is: databases disagreeing with each other — not Ground changing its number. The total is unverifiable; the disagreement is documented."},{"id":"dnic-open-lead","title":"The DNIC Lead — Open","type":"lead","cluster":"money","featured":true,"summary":"An unresolved lead, modelled as one — not a finding. CB Insights lists a “Digital News Innovation Challenge” among Ground's investors, and a Carleton University journal article documents Ground's participation in that programme.","evidence":"“$100,000 in funding and the Facebook ad [credits]” — Guida, Facts & Frictions (2021), on DNIC","sources":["carleton","cbinsights"],"themes":["money","open lead"],"details":"The programme was a Canadian initiative partnered with the Facebook Journalism Project; the Carleton article records $100,000 in funding and Facebook ad credits from Kaur's own account. That is not a big-tech equity investment and does not change the funding verdict. It is also not nothing, and the audit's first draft wrongly declared this limb closed. Round 2, Question 1 digs here."},{"id":"youtube-most-sponsored","title":"#1 Most-Sponsored on YouTube","type":"record","cluster":"money","featured":true,"start":"2025-01-01","end":"2025-06-30","summary":"In the first half of 2025, Ground News was the most-sponsored brand on YouTube in Gospel Stats' sample — first by paid creator integrations and first by views. The qualification matters: English-language channels, videos reaching 25,000 views within seven days; not a full-year title and not a ranking by spend.","evidence":"1,863 sponsored integrations (+202% YoY) and 664M views, H1 2025 — Gospel Stats via Tubefilter","when":"First half of 2025","sources":["tubefilter"],"themes":["distribution","numbers"],"details":"Every report of it derives from that one dataset. A product sold as the antidote to native advertising is, at minimum, distributed very heavily through it — how primarily is an inference, and it is drawn dashed."},{"id":"rater-economics","title":"Who Pays the Raters?","type":"record","cluster":"money","summary":"Three raters, three different relationships, averaged into one adjective — “independent.” On the Columbia Journalism Review's record: Ad Fontes is paid by Ground; Media Bias/Fact Check's founder said there is no agreement; AllSides' COO said its ratings are used without formal permission and without compensation.","evidence":"CJR: Ad Fontes' CEO said Ground pays Ad Fontes; AllSides' COO cited no “formal permission” and no compensation","sources":["cjr"],"themes":["money","accountability"],"details":"Ground's answer, restored by the validators after the audit paraphrased it away: it does not disclose ongoing business relationships and arrangements."},{"id":"mattke-board","title":"A Director's Other Desks","type":"person","cluster":"money","summary":"A board fact, stated as a fact and no further: Manuel Mattke sits in Snapwise's corporate record as a director. He is president and COO of Opportunity Education, the foundation Joe Ricketts founded, and an advisory-board member of Ricketts-owned Straight Arrow News.","evidence":"Opportunity Education lists “Manuel Mattke, President and COO” under founder Joe Ricketts","sources":["corp-canada","opportunity-ed","literatemachine"],"themes":["people","board"],"details":"No evidence in this record shows Ricketts funding Ground News, and this story does not claim it — the inference is named here precisely so it is not smuggled in."},{"id":"straight-arrow","title":"The Straight Arrow Partnership","type":"record","cluster":"money","summary":"A structural, checkable tie: Straight Arrow News — a Ricketts-owned outlet that sells the same “unbiased, without agenda” positioning — operates in partnership with Ground News for some of its news output. No terms are public.","evidence":"Straight Arrow “operates in partnership with Ground News for some of its news output” — Literate Machine","sources":["literatemachine"],"themes":["money","partnership"],"details":"The partnership does not resolve Ground's neutrality claim, which remains unverifiable as a claim about motive; it sits beside that claim as a fact a reader of the claim cannot see from the claim itself."},{"id":"snapwise-2014","title":"Snapwise Inc., 2014","type":"event","cluster":"company","start":"2014-03-26","summary":"The legal company predates the product by years: Snapwise Inc. was federally incorporated in Canada on 26 March 2014, and remains the active corporation behind Ground News, with Harleen Kaur Jolly and Sukhsagar Singh Jolly among its directors.","evidence":"Snapwise Inc., Corp. No. 883500-4, incorporated 2014-03-26 — Corporations Canada","when":"26 March 2014, Kitchener, Ontario","sources":["corp-canada"],"themes":["origins","dates"],"details":"It was incorporated for the siblings' earlier venture — which is why “founded the company in 2017” needs care (see “Founded in 2017”)."},{"id":"ucic-predecessor","title":"Before Ground: uCiC","type":"company","cluster":"company","summary":"The predecessor: before Ground News, the siblings built uCiC, an eyewitness-photo app, inside the same company. It matters to this story for one reason — the earliest detailed telling of Harleen Kaur's NASA story is a January 2017 profile of uCiC, where she is the interview subject.","evidence":"Story Exchange, Jan 2017: the siblings' Waterloo company was built for uCiC, an eyewitness app","when":"Profiled January 2017","sources":["story-exchange"],"themes":["origins"],"details":"The chain of that biography starts there, with her, before Ground News existed."},{"id":"founding-2017","title":"“Founded in 2017”","type":"claim","cluster":"company","start":"2017","summary":"Ground's About page says the siblings founded the company in 2017, out of Waterloo's Velocity incubator. The University of Waterloo's news service repeats 2017 — the strongest third-party repetition, though founder-sourced and not contemporary. Claim Checker: Partially corroborated.","evidence":"“founded the company in 2017 out of the University of Waterloo's Velocity incubator” — About","when":"2017, as claimed","sources":["gn-about","uw-2017","corp-canada"],"themes":["origins","verdict: partially corroborated"],"details":"Read as the founding of the Ground News venture, 2017 is the company's account and plausible; read as the founding of the company, the registry says 2014."},{"id":"launch-2018","title":"Launch: 27 April 2018","type":"event","cluster":"company","start":"2018-04-27","summary":"The first public product is independently dated: the trademark record gives first use of the Ground News name as 31 March 2018, the apps released that April, and Ground's own History page enters the launch under 27 April 2018. Whatever “founded” means, something a user could download exists from this spring.","evidence":"“04/27 /2018 — Ground News Launch” — Ground's History page; trademark first use 31 Mar 2018","when":"27 April 2018 (Ground's own history)","sources":["gn-history","play-store"],"themes":["origins","dates"]},{"id":"pro-launch-2020","title":"Ground News Pro, 2020","type":"event","cluster":"company","start":"2020-01-15","summary":"The current comparison platform — Pro, with Blindspot — launched on 15 January 2020, per contemporary coverage. Ground's own launch post that month quoted 40,000 outlets and ~30,000 stories a day: the baseline from which the headline scale later grew.","evidence":"“on January 15, she launched Ground News” — MediaVillage, Feb 2020","when":"15 January 2020","sources":["mediavillage","producthunt"],"themes":["origins","dates"],"details":"Some retellings mistake this launch for the founding; it is the third date in a sequence, not the first."},{"id":"kaur-nasa","title":"Kaur and NASA","type":"person","cluster":"company","summary":"The founder biography: an aerospace-engineering degree, a career started at NASA, work on the Pluto-bound New Horizons spacecraft. No NASA, Johns Hopkins APL or university record naming her was found; every profile repeats near-identical supplied wording that traces to Kaur herself. Claim Checker: Self-reported only.","evidence":"“started her career at NASA where she worked on the Pluto-bound spacecraft New Horizons” — About","sources":["gn-about","story-exchange"],"themes":["people","verdict: self-reported only"],"details":"In fairness, the timeline coheres — a January 2005 integration-test role sits naturally before New Horizons' January 2006 launch — but coherence is not corroboration."},{"id":"singh-bio","title":"Sukh Singh","type":"person","cluster":"company","summary":"The co-founder's biography as Ground tells it: consulting at IBM and KPMG, then Bain & Company, then his own company, Watchful; a Waterloo BA and an Oxford master's in Decision Science. Nothing here asserts it is wrong; it is untested.","evidence":"“later at Bain & Company before starting his own company Watchful” — About","sources":["gn-about"],"themes":["people","open question"],"details":"The audit captured this biography but never ran it through the battery it applied to Kaur's — an asymmetry the Round 2 questions name (Question 13)."},{"id":"app-scale","title":"1M+ Downloads — a Bracket","type":"record","cluster":"company","summary":"The scale claim that does check out, at bracket level: Google Play shows Ground News past one million installs — a bracket, not a count — with roughly 33,000 ratings averaging 4. 55. Apple's US listing shows 4. Claim Checker: Confirmed, as a bracket.","evidence":"Google Play: “1,000,000+” installs; Apple (US): 4.7 out of 5, 49K ratings","sources":["play-store","apple-store"],"themes":["numbers","verdict: confirmed"],"details":"7 from 49,000 ratings, and Apple publishes no download count at all, so any precise cross-platform total is unverifiable."},{"id":"cc-standard","title":"The Claim Checker Standard","type":"method","cluster":"audit","summary":"The instrument: claims captured verbatim before analysis; sources grouped by independence, so fourteen echoes of one announcement count as one source; a contradiction pass against every material thesis; and exactly five verdicts — Confirmed, Partially corroborated, Self-reported only, Unverifiable by design,","evidence":"“We are not a ratings agency and we do not sell scores.” — the Standard's mission","sources":["cc-standard"],"themes":["audit","method"],"details":"Contradicted. “We could not verify this” is a publishable result, never a gap to smooth over."},{"id":"the-audit","title":"The Audit: 16 Atoms","type":"event","cluster":"audit","start":"2026-11-13","summary":"On 13 November 2026, Claim Checker ran Ground News through the Standard: every public claim that mattered, atomised — scale, ratings, algorithms, founding, biography, funding, reviews, ownership, neutrality — and tested against records independent of the company. Ground's own pages were captured live the same day.","evidence":"16 claim atoms, seven tests, one contradiction pass — audit record, 13 Nov 2026","when":"13 November 2026","sources":["cc-record","cc-standard"],"themes":["audit"],"details":"The audit is an internal record; nothing in this story was published to Ground or about it."},{"id":"verdict-tally","title":"The Corrected Tally","type":"verdict","cluster":"audit","featured":true,"summary":"After validation, the count stands: 3 Confirmed, 4 Partially corroborated, 4 Self-reported only, 2 Unverifiable by design, 3 Contradicted — sixteen atoms, one verdict each. The three Contradicted are the load-bearing ones: the FAQ's factuality, the sales page's algorithms, the mission page's investors.","evidence":"Confirmed 3 · Partially corroborated 4 · Self-reported only 4 · Unverifiable 2 · Contradicted 3","sources":["cc-record"],"themes":["audit","verdicts"],"details":"Note what did not happen to the tally's neighbours: the methodology page's own factuality claim is among the Confirmed."},{"id":"one-line-finding","title":"The One-Line Finding","type":"verdict","cluster":"audit","featured":true,"summary":"Ground News built a transparency product whose own transparency claims are its weakest surface: its methodology page is mostly honest, and its FAQ, sales page and mission page contradict that methodology page on factuality, algorithms and funding.","evidence":"Finding rests on GN-05 (factuality), GN-06 (algorithms), GN-09 (funding) — none re-verdicted","sources":["cc-record"],"themes":["audit","verdict"],"details":"Both validators tested this sentence against the ledger and left it unchanged — it rests on atoms none of their exceptions touched."},{"id":"validator-pass","title":"Generator ≠ Validator","type":"method","cluster":"audit","summary":"The audit was then audited: two validators who did not generate it re-checked every atom against the primary sources, hunting for errors. Both filed “Cleared with exceptions.”","evidence":"Validator A (GN-01–08) and Validator B (GN-09–16): both “Cleared with exceptions”","sources":["cc-record","cc-standard"],"themes":["audit","validation"],"details":"Their filings confirmed the load-bearing findings, strengthened two (a better funding source; a structural tie the audit had footnoted) — and overturned two of the generator's verdicts, which stand corrected in the errata, beside the originals."},{"id":"corrections-beside-errors","title":"Corrections Beside Errors","type":"verdict","cluster":"audit","summary":"The two errors are kept in the record, not edited away. First: the review-count pair was called Contradicted — a plus-floor logic error, since 53,000+ makes 10,000+ true, not false. Second: the 83-cents-a-month tier was called a legacy price — it is a live tier, and the pricing atom is Confirmed as stated.","evidence":"GN-10: Contradicted → Partially corroborated. GN-16: Partially corroborated → Confirmed. (Errata, 13 Nov 2026)","sources":["cc-record"],"themes":["audit","corrections"],"details":"Claim Checker's rule is that corrections append as dated errata; audits are never overwritten. The desk that checks everyone else's numbers shows its working when its own are wrong."},{"id":"accountability-record","title":"Accountability, Graded Weak","type":"verdict","cluster":"audit","summary":"How the company answers when checked: graded weak, on a fair record. It gave CJR a quotable reason rather than silence; it answers users publicly and substantively, on Trustpilot and its store listings, including on its ratings method.","evidence":"“Edit Bias Rating” changes a rating “on your personal account” only — Rating System / FAQ record","sources":["cjr","trustpilot","gn-rating"],"themes":["audit","accountability"],"details":"But the only fix a user can make to a disputed rating — “Edit Bias Rating” — changes the rating on their own account and corrects nothing public, and the rater relationships behind its core product were left unexplained to the one outlet that asked on the record."},{"id":"press-laundering","title":"One Source, Many Echoes","type":"concept","cluster":"audit","summary":"The audit's press-laundering test, and its most quietly damning result: the 50,000 sources, the 60,000 articles, the 2017 founding, the NASA biography and the “largest aggregator” superlative appear in outlet after outlet — and grouped by independence they are one source, Ground News, repeated.","evidence":"Scale, founding, NASA bio and superlative: one independence group — Ground News itself","sources":["cc-record","gn-about"],"themes":["audit","mechanism"],"details":"Even Wikipedia's citations for these claims terminate at Ground's own About page. Repetition is not corroboration; it is distribution."},{"id":"round2-questions","title":"What We Would Ask Next","type":"concept","cluster":"audit","featured":true,"summary":"The audit ends open, on purpose. Fifteen follow-up questions in five threads — the money (DNIC's full terms; a raise-by-raise reconstruction), the product in hand (does “Factuality” sit beside individual stories? ), the method (can anyone rebuild the composite? Each question names what it could move.","evidence":"15 questions, 5 threads — Round 2 Next Questions, 13 Nov 2026 (Q1: the DNIC money; Q14: the accountability experiment)","sources":["cc-record"],"themes":["audit","open questions"],"details":"), the people (ask the NASA record-holders directly), and one live experiment: file the factuality contradiction with Ground through its own feedback channel, and clock who answers. Unpicked, they stay on file with the audit."}],"edges":[{"source":"ground-news","target":"slogan","label":"promises","kind":"explicit","sources":["gn-home"]},{"source":"ground-news","target":"mission-think-freely","label":"states its mission as","kind":"explicit","sources":["gn-mission"]},{"source":"ground-news","target":"snapwise-2014","label":"is operated by","kind":"explicit","sources":["corp-canada","play-store"]},{"source":"ground-news","target":"scale-claim","label":"sells itself on","kind":"explicit","sources":["gn-about"]},{"source":"ground-news","target":"bias-three-raters","label":"builds its bias bar from","kind":"explicit","sources":["gn-rating"]},{"source":"ground-news","target":"largest-aggregator","label":"claims, in its store copy,","kind":"explicit","sources":["play-store"]},{"source":"ground-news","target":"blindspot","label":"surfaces under-covered stories via","kind":"explicit","sources":["gn-blindspot"]},{"source":"ground-news","target":"ownership-dataset","label":"hand-codes","kind":"explicit","sources":["gn-rating"]},{"source":"ground-news","target":"subscribe-no-algorithms","label":"markets itself with","kind":"explicit","sources":["gn-subscribe"]},{"source":"ground-news","target":"reviews-10k","label":"publishes","kind":"explicit","sources":["gn-home"]},{"source":"ground-news","target":"reviews-53k","label":"also publishes","kind":"explicit","sources":["gn-subscribe"]},{"source":"ground-news","target":"kaur-nasa","label":"was co-founded by the subject of","kind":"explicit","sources":["gn-about"]},{"source":"ground-news","target":"app-scale","label":"passed, on Play, the bracket of","kind":"explicit","sources":["play-store"]},{"source":"slogan","target":"mission-think-freely","label":"is cashed out as","kind":"explicit","sources":["gn-mission"]},{"source":"mission-think-freely","target":"neutrality-claim","label":"asserts","kind":"explicit","sources":["gn-mission"]},{"source":"mission-think-freely","target":"subscription-not-ads","label":"sets the business-model principle","kind":"explicit","sources":["gn-mission"]},{"source":"mission-think-freely","target":"no-institutional-claim","label":"also claims, on the same page,","kind":"explicit","sources":["gn-mission"]},{"source":"scale-claim","target":"largest-aggregator","label":"underwrites","kind":"inferred"},{"source":"slogan","target":"publication-not-article","label":"is qualified, in the methodology's fine print, by","kind":"inferred"},{"source":"bias-three-raters","target":"bias-scales","label":"combines","kind":"explicit","sources":["adfontes","mbfc","allsides"]},{"source":"bias-three-raters","target":"factuality-two-raters","label":"is split, on the same page, into","kind":"explicit","sources":["gn-rating"]},{"source":"bias-three-raters","target":"publication-not-article","label":"is likewise bounded by","kind":"explicit","sources":["gn-rating"]},{"source":"bias-scales","target":"publication-not-article","label":"feeds, unreproducibly, into","kind":"explicit","sources":["gn-rating"]},{"source":"factuality-two-raters","target":"reliability-relabel","label":"relabels one rater's axis, per","kind":"explicit","sources":["adfontes"]},{"source":"factuality-two-raters","target":"publication-not-article","label":"is bounded by","kind":"explicit","sources":["gn-rating"]},{"source":"blindspot","target":"blindspot-formula","label":"is defined by","kind":"explicit","sources":["gn-rating"]},{"source":"blindspot","target":"blindspot-test","label":"was tested, as a newsletter, in","kind":"explicit","sources":["plosone"]},{"source":"faq-three-raters","target":"factuality-two-raters","label":"contradicts","kind":"explicit","sources":["gn-faq","gn-rating"]},{"source":"allsides-no-accuracy","target":"faq-three-raters","label":"removes the third rater from","kind":"explicit","sources":["allsides"]},{"source":"subscribe-no-algorithms","target":"myfeed-algorithmic","label":"is contradicted by","kind":"explicit","sources":["gn-subscribe","gn-faq"]},{"source":"reviews-10k","target":"reviews-53k","label":"stands beside","kind":"explicit","sources":["cc-record"]},{"source":"no-institutional-claim","target":"investor-record","label":"is contradicted by","kind":"explicit","sources":["pitchbook","cbinsights"]},{"source":"investor-record","target":"velocity-first-institutional","label":"includes","kind":"explicit","sources":["uw-velocity"]},{"source":"investor-record","target":"totals-spread","label":"cannot be totalled because of","kind":"explicit","sources":["pitchbook","cbinsights","tracxn"]},{"source":"velocity-first-institutional","target":"totals-spread","label":"post-dates, undisclosed,","kind":"explicit","sources":["pitchbook","cc-record"]},{"source":"totals-spread","target":"dnic-open-lead","label":"sits unresolved beside","kind":"explicit","sources":["cbinsights","carleton"]},{"source":"dnic-open-lead","target":"investor-record","label":"is listed, unresolved, in","kind":"explicit","sources":["cbinsights"]},{"source":"youtube-most-sponsored","target":"subscription-not-ads","label":"raises the question for","kind":"inferred"},{"source":"rater-economics","target":"bias-three-raters","label":"complicates the independence of","kind":"explicit","sources":["cjr"]},{"source":"mattke-board","target":"snapwise-2014","label":"sits on the board of","kind":"explicit","sources":["corp-canada"]},{"source":"mattke-board","target":"straight-arrow","label":"advises","kind":"explicit","sources":["literatemachine"]},{"source":"straight-arrow","target":"ground-news","label":"partners with","kind":"explicit","sources":["literatemachine"]},{"source":"straight-arrow","target":"neutrality-claim","label":"sits beside, as a structural fact","kind":"inferred"},{"source":"snapwise-2014","target":"ucic-predecessor","label":"first built","kind":"explicit","sources":["story-exchange"]},{"source":"ucic-predecessor","target":"founding-2017","label":"gave way to","kind":"explicit","sources":["story-exchange","gn-about"]},{"source":"founding-2017","target":"launch-2018","label":"is followed in the record by","kind":"explicit","sources":["gn-history"]},{"source":"launch-2018","target":"pro-launch-2020","label":"led to","kind":"explicit","sources":["mediavillage"]},{"source":"pro-launch-2020","target":"scale-claim","label":"launched alongside a smaller version of","kind":"explicit","sources":["producthunt"]},{"source":"kaur-nasa","target":"ucic-predecessor","label":"was first told in a profile of","kind":"explicit","sources":["story-exchange"]},{"source":"singh-bio","target":"kaur-nasa","label":"stands untested beside","kind":"explicit","sources":["gn-about"]},{"source":"ownership-dataset","target":"scale-claim","label":"covers an unknown share of","kind":"inferred"},{"source":"cc-standard","target":"ground-news","label":"was applied to","kind":"explicit","sources":["cc-record"]},{"source":"the-audit","target":"cc-standard","label":"ran","kind":"explicit","sources":["cc-record"]},{"source":"the-audit","target":"verdict-tally","label":"produced","kind":"explicit","sources":["cc-record"]},{"source":"verdict-tally","target":"one-line-finding","label":"distils to","kind":"explicit","sources":["cc-record"]},{"source":"validator-pass","target":"the-audit","label":"re-checked","kind":"explicit","sources":["cc-record"]},{"source":"validator-pass","target":"corrections-beside-errors","label":"produced","kind":"explicit","sources":["cc-record"]},{"source":"corrections-beside-errors","target":"reviews-53k","label":"re-verdicted","kind":"explicit","sources":["cc-record"]},{"source":"corrections-beside-errors","target":"velocity-first-institutional","label":"surfaced a stronger source for","kind":"explicit","sources":["cc-record"]},{"source":"the-audit","target":"accountability-record","label":"graded","kind":"explicit","sources":["cc-record","cjr"]},{"source":"press-laundering","target":"scale-claim","label":"explains the echoes of","kind":"explicit","sources":["cc-record"]},{"source":"round2-questions","target":"dnic-open-lead","label":"takes as its first question","kind":"explicit","sources":["cc-record"]},{"source":"the-audit","target":"round2-questions","label":"ends with","kind":"explicit","sources":["cc-record"]},{"source":"one-line-finding","target":"no-institutional-claim","label":"rests on","kind":"explicit","sources":["cc-record"]},{"source":"one-line-finding","target":"faq-three-raters","label":"and on","kind":"explicit","sources":["cc-record"]},{"source":"one-line-finding","target":"subscribe-no-algorithms","label":"and on","kind":"explicit","sources":["cc-record"]}],"stories":[{"id":"the-promise","title":"The promise: freedom from other people's filters","summary":"Start where Ground starts: every side of every story, a mission to help readers think freely, neutrality as a principle, and a business model that sells to users rather than selling users. This path takes the promise at full strength — the rest of the map is what happens when you check it.","steps":["ground-news","slogan","mission-think-freely","neutrality-claim","subscription-not-ads"]},{"id":"the-method","title":"How the method actually works","summary":"Ground's honest core: it does not rate outlets itself. Three raters' bias scores are averaged, two raters' reliability scores are renamed Factuality, everything is scored at publication level, and a published formula decides what counts as a Blindspot. The method is real; its seams — incommensurable scales, no published composite formula, a dataset nobody has audited — are on this path too.","steps":["bias-three-raters","bias-scales","publication-not-article","factuality-two-raters","reliability-relabel","blindspot","blindspot-formula","blindspot-test","ownership-dataset"]},{"id":"the-contradictions","title":"The site argues with itself","summary":"No outside accuser is needed for this path: Ground's own pages, read against each other. The methodology page says factuality averages two raters; the FAQ says three, and the third rater itself refuses the job. The sales page denies algorithms; the FAQ describes one. Two review floors stand side by side, and the logic of the plus sign — not rhetoric — decides what that means.","steps":["factuality-two-raters","faq-three-raters","allsides-no-accuracy","subscribe-no-algorithms","myfeed-algorithmic","reviews-10k","reviews-53k"]},{"id":"the-money","title":"Follow the money — what's actually there","summary":"“No institutional investors, a small group of individuals” meets the record: venture funds in four disagreeing databases, a university naming its would-be “first institutional investor” as a Ground backer, raters in three different paid and unpaid relationships, the heaviest YouTube sponsorship programme in its sample — and one open lead, DNIC, that this path deliberately leaves unresolved.","steps":["no-institutional-claim","investor-record","velocity-first-institutional","totals-spread","dnic-open-lead","rater-economics","youtube-most-sponsored"]},{"id":"four-dates","title":"A company in four dates","summary":"“Founded in 2017” dissolves, on inspection, into a sequence any reader can check: a company incorporated in 2014 for a different app, a venture the founders date to 2017, a product launched in April 2018, and the current platform launched in January 2020. None of the four dates is a lie; the single year on the About page is doing work the sequence doesn't support.","steps":["snapwise-2014","ucic-predecessor","founding-2017","launch-2018","pro-launch-2020","app-scale"]},{"id":"the-audit-and-next","title":"The audit — and what we would ask next","summary":"The instrument, the tally, and the audit's audit: two validators who didn't generate the report re-checked it, strengthened parts of it, and overturned two verdicts, which remain in the record beside their corrections. The path ends where the audit ends — not on a conclusion but on fifteen open questions, the first of which is the money nobody has yet explained.","steps":["cc-standard","the-audit","verdict-tally","one-line-finding","validator-pass","corrections-beside-errors","dnic-open-lead","round2-questions"]}]}</script>
+<script>
+(() => {
+"use strict";
+const story = JSON.parse(document.getElementById("story-data").textContent);
+const theme = JSON.parse(document.getElementById("theme-data").textContent);
+const NS = "http://www.w3.org/2000/svg";
+const $ = (id) => document.getElementById(id);
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isNarrow = () => innerWidth <= 760;
+
+/* ---------- tiny DOM helpers (all text goes through textContent: no HTML injection) ---------- */
+function el(tag, props, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.className = v;
+    else if (k === "text") e.textContent = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null) e.append(c.nodeType ? c : document.createTextNode(c));
+  return e;
+}
+function sv(tag, props) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(props || {})) if (v != null) e.setAttribute(k, v);
+  return e;
+}
+const safeUrl = (u) => { try { return /^https?:$/.test(new URL(u).protocol) ? u : null; } catch { return null; } };
+const cap = (s) => String(s || "").replace(/[-_]/g, " ").replace(/^./, (c) => c.toUpperCase());
+
+/* ---------- theme ---------- */
+const hex2rgb = (h) => { h = h.replace("#", ""); if (h.length === 3) h = [...h].map((x) => x + x).join(""); return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)); };
+function rgb2hsl([r, g, b]) {
+  r /= 255; g /= 255; b /= 255;
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn; let h = 0, s = 0; const l = (mx + mn) / 2;
+  if (d) { s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; }
+  return [h, s, l];
+}
+const nClusters = story.clusters.length;
+const cIndex = new Map(story.clusters.map((c, i) => [c.id, i]));
+function clusterColor(id) {
+  if (theme.clusters && theme.clusters[id]) return theme.clusters[id];
+  const [h, s] = rgb2hsl(hex2rgb(theme.colors.accent));
+  const hue = (h + cIndex.get(id) * (360 / nClusters)) % 360;
+  return `hsl(${hue.toFixed(0)} ${Math.max(45, Math.min(75, s * 100)).toFixed(0)}% ${theme.mode === "dark" ? 66 : 40}%)`;
+}
+const colors = Object.fromEntries(story.clusters.map((c) => [c.id, clusterColor(c.id)]));
+if (theme.font) {
+  if (theme.font.body) document.body.style.fontFamily = theme.font.body;
+  if (theme.font.display) $("wordmark").style.fontFamily = theme.font.display;
+}
+const wm = theme.wordmark || {};
+$("wordmark").textContent = wm.text || story.title;
+if (wm.letterSpacing) $("wordmark").style.letterSpacing = wm.letterSpacing;
+if (wm.uppercase) $("wordmark").style.textTransform = "uppercase";
+if (theme.logo && theme.logo.src) $("logo").append(el("img", { src: theme.logo.src, alt: theme.logo.alt || "" }));
+$("dek").textContent = story.tagline;
+$("credit").textContent = [story.disclaimer, story.credit].filter(Boolean).join(" ");
+
+/* ---------- model ---------- */
+const nodes = story.nodes.map((n) => ({ ...n, x: 0, y: 0, vx: 0, vy: 0, deg: 0, color: colors[n.cluster], isRoot: n.id === story.root }));
+const byId = new Map(nodes.map((n) => [n.id, n]));
+const edges = story.edges.map((e, i) => ({ ...e, i, a: byId.get(e.source), b: byId.get(e.target) }));
+const adj = new Map(nodes.map((n) => [n.id, new Set()]));
+for (const e of edges) { e.a.deg++; e.b.deg++; adj.get(e.source).add(e.target); adj.get(e.target).add(e.source); }
+for (const n of nodes) n.r = n.isRoot ? 30 : (n.featured ? 13 : 8) + Math.min(n.deg, 8) * 0.45;
+const srcById = new Map(story.sources.map((s) => [s.id, s]));
+const storyById = new Map((story.stories || []).map((s) => [s.id, s]));
+
+/* ---------- force layout (deterministic, no dependencies) ---------- */
+function rng(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function layout() {
+  const rnd = rng(7), N = nodes.length;
+  const sector = (id) => 2 * Math.PI * (cIndex.get(id) + 0.5) / nClusters;
+  const R = 330 + Math.sqrt(N) * 40;
+  const asp = Math.max(0.75, Math.min(2.2, svgEl.clientWidth / Math.max(1, svgEl.clientHeight))), ax = Math.sqrt(asp), ay = 1 / ax; // fill the stage shape
+  for (const n of nodes) {
+    n.vx = n.vy = 0;
+    if (n.isRoot) { n.x = n.y = 0; continue; }
+    const ang = sector(n.cluster) + (rnd() - 0.5) * 0.9, rad = R * (0.45 + rnd() * 0.7);
+    n.x = Math.cos(ang) * rad * ax; n.y = Math.sin(ang) * rad * ay;
+  }
+  const iters = N > 140 ? 220 : 480, XS = 0.55; // XS<1 makes horizontal crowding count more: labels are wider than tall
+  for (let it = 0; it < iters; it++) {
+    const alpha = Math.pow(1 - it / iters, 1.4);
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+      const a = nodes[i], b = nodes[j];
+      let dx = b.x - a.x, dy = b.y - a.y;
+      if (dx * dx + dy * dy < 1) { dx = rnd() - .5; dy = rnd() - .5; }
+      const wd = Math.sqrt(dx * dx * XS * XS + dy * dy) || 1, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      const min = a.r + b.r + 95;
+      let f = 26000 / (wd * wd); if (wd < min) f += (min - wd) * 0.9;
+      f *= alpha + 0.04;
+      const fx = dx / d * f, fy = dy / d * f;
+      a.vx -= fx; a.vy -= fy; b.vx += fx; b.vy += fy;
+    }
+    for (const e of edges) {
+      const a = e.a, b = e.b, dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      const L = a.cluster === b.cluster ? 150 : 250, f = (d - L) * 0.03 * (alpha + 0.1);
+      const fx = dx / d * f, fy = dy / d * f; a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+    }
+    for (const n of nodes) {
+      if (n.isRoot) continue;
+      const s = sector(n.cluster), tx = Math.cos(s) * R * ax, ty = Math.sin(s) * R * ay;
+      n.vx += (tx - n.x) * 0.014 * alpha; n.vy += (ty - n.y) * 0.014 * alpha;
+      n.x += n.vx * 0.6; n.y += n.vy * 0.6; n.vx *= 0.55; n.vy *= 0.55;
+    }
+  }
+}
+
+/* ---------- SVG build ---------- */
+const svgEl = $("graph"), vp = $("vp");
+for (const e of edges) {
+  e.line = sv("line", { class: "edge" + (e.kind === "inferred" ? " inferred" : "") });
+  e.line.append(Object.assign(sv("title"), { textContent: `${e.a.title} → ${e.b.title}: ${e.label} (${e.kind})` }));
+  e.text = sv("text", { class: "edge-label" }); e.text.textContent = e.label;
+  $("edges").append(e.line); $("edge-labels").append(e.text);
+}
+for (const n of nodes) {
+  const g = sv("g", { class: "node" + (n.isRoot ? " root" : ""), tabindex: 0, role: "button", "aria-label": `${n.title}, ${cap(n.type)}, ${story.clusters[cIndex.get(n.cluster)].label}`, "data-id": n.id });
+  g.append(sv("circle", { r: n.r + 11, fill: "transparent" }));
+  g.append(sv("circle", { class: "ring", r: n.r + 6 }));
+  g.append(sv("circle", { class: "core", r: n.r, stroke: n.color, style: n.isRoot ? "fill:" + n.color : null }));
+  if (!n.isRoot) g.append(sv("circle", { class: "dot", r: Math.max(2, n.r * 0.22), fill: n.color }));
+  const lab = sv("text", { class: "label", y: n.r + 15 }); lab.textContent = n.title; g.append(lab);
+  if (!n.isRoot) { const k = sv("text", { class: "kind", y: n.r + 26 }); k.textContent = cap(n.type); g.append(k); }
+  g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(n.id, { center: true }); } });
+  n.g = g; $("nodes").append(g);
+}
+function place() {
+  for (const e of edges) {
+    e.line.setAttribute("x1", e.a.x); e.line.setAttribute("y1", e.a.y); e.line.setAttribute("x2", e.b.x); e.line.setAttribute("y2", e.b.y);
+    e.text.setAttribute("x", (e.a.x + e.b.x) / 2); e.text.setAttribute("y", (e.a.y + e.b.y) / 2 - 4);
+  }
+  for (const n of nodes) n.g.setAttribute("transform", `translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})`);
+  drawStoryPath();
+}
+
+/* ---------- view (pan / zoom) ---------- */
+const view = { x: 0, y: 0, k: 1 };
+function applyView() { svgEl.style.setProperty("--ls", Math.min(2.2, Math.max(1, 0.95 / view.k)).toFixed(2)); vp.setAttribute("transform", `translate(${view.x} ${view.y}) scale(${view.k})`); svgEl.classList.toggle("zoomed", view.k >= 1.15); }
+let tweenId = 0;
+function tween(to, ms = 480) {
+  cancelAnimationFrame(tweenId);
+  if (reduceMotion) { Object.assign(view, to); applyView(); return; }
+  const from = { ...view }, t0 = performance.now();
+  const step = (t) => {
+    const p = Math.min(1, (t - t0) / ms), q = 1 - Math.pow(1 - p, 3);
+    view.x = from.x + (to.x - from.x) * q; view.y = from.y + (to.y - from.y) * q; view.k = from.k + (to.k - from.k) * q; applyView();
+    if (p < 1) tweenId = requestAnimationFrame(step);
+  };
+  tweenId = requestAnimationFrame(step);
+}
+const stageBox = () => {
+  const W = svgEl.clientWidth, H = svgEl.clientHeight;
+  const panelOpen = $("panel").classList.contains("open");
+  return { W, H, left: 0, right: panelOpen && !isNarrow() ? Math.min(400, W) : 0, bottom: (panelOpen && isNarrow() ? H * 0.58 : 0) + $("foot").offsetHeight };
+};
+function fit(animate = true, list = nodes) {
+  const { W, H, right, bottom } = stageBox();
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  for (const n of list) { const lw = Math.min(210, n.title.length * 6.2) / 2 + 12; x0 = Math.min(x0, n.x - Math.max(n.r, lw)); x1 = Math.max(x1, n.x + Math.max(n.r, lw)); y0 = Math.min(y0, n.y - n.r - 30); y1 = Math.max(y1, n.y + n.r + 50); }
+  const aw = W - right, ah = H - bottom - 8;
+  const k = Math.max(0.2, Math.min(1.6, Math.min(aw / (x1 - x0), ah / (y1 - y0))));
+  const to = { k, x: aw / 2 - (x0 + x1) / 2 * k, y: (ah + 0) / 2 - (y0 + y1) / 2 * k + 6 };
+  animate ? tween(to) : (Object.assign(view, to), applyView());
+}
+function center(n) {
+  const { W, H, right, bottom } = stageBox(), k = Math.max(view.k, 1);
+  tween({ k, x: (W - right) / 2 - n.x * k, y: (H - bottom) / 2 - n.y * k - 10 }, 420);
+}
+function zoomAt(f, cx, cy) {
+  const k = Math.max(0.2, Math.min(4, view.k * f)), r = k / view.k;
+  view.x = cx - (cx - view.x) * r; view.y = cy - (cy - view.y) * r; view.k = k; applyView();
+}
+
+/* ---------- state + render ---------- */
+const S = { selected: null, filter: "all", q: "", view: "graph", story: null, step: 0, readStory: null, open: new Set() };
+const matches = (n) => {
+  if (S.filter !== "all" && n.cluster !== S.filter) return false;
+  if (!S.q) return true;
+  return [n.title, n.summary, n.details, n.type, (n.themes || []).join(" ")].join(" ").toLowerCase().includes(S.q);
+};
+function render() {
+  const sel = S.selected && byId.get(S.selected), nb = sel ? adj.get(sel.id) : null;
+  const inStory = S.story ? new Set(S.story.steps) : null;
+  let shown = 0;
+  for (const n of nodes) {
+    const m = matches(n); if (m) shown++;
+    let dim = !m;
+    if (inStory) dim = dim || !inStory.has(n.id);
+    else if (sel && n !== sel && !nb.has(n.id)) dim = true;
+    n.g.classList.toggle("dim", dim);
+    n.g.classList.toggle("sel", n === sel);
+    n.g.setAttribute("aria-pressed", String(n === sel));
+  }
+  for (const e of edges) {
+    const hl = !inStory && sel && (e.a === sel || e.b === sel);
+    e.line.classList.toggle("hl", !!hl); e.text.classList.toggle("hl", !!hl);
+    let dim = !(matches(e.a) && matches(e.b));
+    if (inStory) dim = true; else if (sel && !hl) dim = true;
+    e.line.classList.toggle("dim", dim);
+  }
+  $("empty").classList.toggle("on", shown === 0 && S.view === "graph");
+  $("status").textContent = `${nodes.length} nodes · ${edges.length} edges · ${S.q || S.filter !== "all" ? `${shown} match · ` : ""}Click a node to explore the story.`;
+  for (const b of $("chips").children) b.setAttribute("aria-pressed", String(b.dataset.c === S.filter));
+  for (const b of $("stories").querySelectorAll("button")) b.setAttribute("aria-pressed", String(!!S.story && b.dataset.s === S.story.id));
+  if (S.view === "list") renderList(); else if (S.view === "timeline") renderTimeline(); else if (S.view === "outline") renderOutline();
+  drawStoryPath();
+}
+
+/* ---------- story mode ---------- */
+function drawStoryPath() {
+  const p = $("story-path"), bg = $("badges"); bg.textContent = "";
+  if (!S.story) { p.setAttribute("d", ""); return; }
+  const pts = S.story.steps.map((id) => byId.get(id));
+  p.setAttribute("d", pts.map((n, i) => `${i ? "L" : "M"}${n.x.toFixed(1)} ${n.y.toFixed(1)}`).join(" "));
+  pts.forEach((n, i) => {
+    const g = sv("g", { class: "badge", transform: `translate(${(n.x + n.r * 0.8).toFixed(1)} ${(n.y - n.r * 0.8).toFixed(1)})`, opacity: i === S.step ? 1 : 0.75 });
+    g.append(sv("circle", { r: i === S.step ? 10 : 8 })); const t = sv("text"); t.textContent = i + 1; g.append(t); bg.append(g);
+  });
+}
+function startStory(id) {
+  const st = storyById.get(id); if (!st) return;
+  S.story = st; S.step = 0;
+  if (S.view !== "graph" && S.view !== "timeline") setView("graph");
+  if (S.view === "timeline") tlFocusStory(st); // zoom the timeline to the story's own dates
+  $("storybar").classList.add("on"); goStep(0);
+}
+function goStep(i) {
+  const st = S.story; if (!st) return;
+  S.step = Math.max(0, Math.min(st.steps.length - 1, i));
+  $("sb-step").textContent = `Story · step ${S.step + 1} of ${st.steps.length}`;
+  $("sb-title").textContent = st.title; $("sb-sum").textContent = st.summary || "";
+  $("sb-prev").disabled = S.step === 0; $("sb-next").disabled = S.step === st.steps.length - 1;
+  select(st.steps[S.step], { center: true, keepStory: true });
+}
+function endStory() { S.story = null; $("storybar").classList.remove("on"); render(); }
+
+/* ---------- detail panel ---------- */
+function relRow(e, n) {
+  const other = e.a === n ? e.b : e.a, out = e.a === n;
+  return el("li", null, el("button", { onclick: () => select(other.id, { center: true }) },
+    el("b", { text: other.title }),
+    el("span", { class: "rel" }, out ? "→ " : "← ", el("em", { text: e.label }), ` · ${e.kind}`)));
+}
+function openPanel(n) {
+  const p = $("panel"); p.textContent = "";
+  const cl = story.clusters[cIndex.get(n.cluster)];
+  p.append(el("button", { class: "close", "aria-label": "Close details", text: "×", onclick: () => select(null) }));
+  p.append(el("div", { class: "kicker", style: `--c:${n.color}` }, el("i"), el("span", { text: cl.label }), el("span", { text: "·", "aria-hidden": "true" }), el("span", { text: cap(n.type) })));
+  p.append(el("h2", { text: n.title }), el("p", { text: n.summary }));
+  if (n.details) p.append(el("p", { class: "details", text: n.details }));
+  if (n.evidence) p.append(el("h3", { text: "Evidence" }), el("blockquote", { text: n.evidence }));
+  if (n.when) p.append(el("h3", { text: "When" }), el("p", { text: n.when }));
+  if (n.themes && n.themes.length) p.append(el("h3", { text: "Themes" }), el("div", { class: "tags" }, n.themes.map((t) => el("span", { class: "tag", text: t }))));
+  const rel = edges.filter((e) => e.a === n || e.b === n);
+  if (rel.length) p.append(el("h3", { text: `Connections (${rel.length})` }), el("ul", { class: "links" }, rel.map((e) => relRow(e, n))));
+  const srcs = (n.sources || []).map((id) => srcById.get(id)).filter(Boolean);
+  if (srcs.length) p.append(el("h3", { text: "Sources" }), el("ul", { class: "src" }, srcs.map((s) => {
+    const u = safeUrl(s.url);
+    return el("li", null, u ? el("a", { href: u, target: "_blank", rel: "noopener noreferrer", text: s.title }) : s.title, s.accessed ? el("small", { text: `Accessed ${s.accessed}` }) : null);
+  })));
+  const inStories = (story.stories || []).filter((s) => s.steps.includes(n.id));
+  if (inStories.length && !S.story) p.append(el("h3", { text: "Appears in" }), el("div", { class: "tags" }, inStories.map((s) => el("button", { class: "chip", text: s.title, onclick: () => startStory(s.id) }))));
+  p.classList.add("open"); p.scrollTop = 0;
+}
+function select(id, opts = {}) {
+  if (!opts.keepStory && S.story && id) endStoryQuiet();
+  S.selected = id;
+  const p = $("panel");
+  document.querySelector("main").classList.toggle("sheet", !!id);
+  if (id) { openPanel(byId.get(id)); try { history.replaceState(null, "", "#node=" + encodeURIComponent(id)); } catch {} }
+  else { p.classList.remove("open"); try { history.replaceState(null, "", location.pathname + location.search); } catch {} }
+  if (id) ensureTL(byId.get(id));
+  render();
+  if (id && opts.center && S.view === "graph") center(byId.get(id));
+}
+function endStoryQuiet() { S.story = null; $("storybar").classList.remove("on"); }
+
+/* ---------- views: list, timeline, read, outline ---------- */
+function renderList() {
+  const box = $("list"); box.textContent = "";
+  let any = false;
+  for (const c of story.clusters) {
+    const items = nodes.filter((n) => n.cluster === c.id && matches(n));
+    if (!items.length) continue; any = true;
+    box.append(el("section", null,
+      el("h2", { style: `--c:${colors[c.id]}` }, el("i"), c.label),
+      el("ul", null, items.map((n) => el("li", null, el("button", { class: "item", style: `--c:${n.color}`, onclick: () => select(n.id) },
+        el("small", { text: cap(n.type) }), el("b", { text: n.title }), el("span", { text: n.summary })))))));
+  }
+  if (!any) box.append(el("p", { text: "No nodes match.", style: "color:var(--muted);text-align:center" }));
+}
+
+/* ----- time parsing: "1666-09-02" | "1666-09" | "1666" | "-0500" (negative = BCE). Decimal years. ----- */
+const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function utc(y, mo, d) { const dt = new Date(0); dt.setUTCFullYear(y, mo, d); dt.setUTCHours(0, 0, 0, 0); return dt; }
+function tOf(y, mo, d) { return y + Math.round((utc(y, mo, d) - utc(y, 0, 1)) / 864e5) / 365.25; }
+function parseT(s) {
+  if (typeof s !== "string") return null;
+  const m = /^(-?\d{1,5})(?:-(\d{2})(?:-(\d{2}))?)?$/.exec(s.trim());
+  if (!m) return null;
+  return tOf(+m[1], m[2] ? +m[2] - 1 : 0, m[3] ? +m[3] : 1);
+}
+function dateOf(t) { const y = Math.floor(t), dt = utc(y, 0, 1); dt.setTime(dt.getTime() + Math.round((t - y) * 365.25) * 864e5); return dt; }
+const yearLabel = (y) => (y < 0 ? `${-y} BCE` : String(y));
+function makeTicks(a, b, want) {
+  const span = b - a, out = [];
+  const steps = [["y", 1000], ["y", 500], ["y", 200], ["y", 100], ["y", 50], ["y", 20], ["y", 10], ["y", 5], ["y", 2], ["y", 1], ["m", 6], ["m", 3], ["m", 1], ["d", 14], ["d", 7], ["d", 2], ["d", 1]];
+  const size = (s) => (s[0] === "y" ? s[1] : s[0] === "m" ? s[1] / 12 : s[1] / 365.25);
+  let pick = steps[steps.length - 1];
+  for (const s of steps) if (span / size(s) >= want) { pick = s; break; }
+  const [u, k] = pick;
+  if (u === "y") {
+    for (let y = Math.ceil(Math.floor(a) / k) * k; out.length < 300; y += k) { const t = tOf(y, 0, 1); if (t > b) break; if (t >= a) out.push({ t, label: yearLabel(y) }); }
+  } else if (u === "m") {
+    const d0 = dateOf(a); let y = d0.getUTCFullYear(), mo = Math.floor(d0.getUTCMonth() / k) * k;
+    for (; out.length < 300; mo += k) { if (mo >= 12) { y += Math.floor(mo / 12); mo %= 12; } const t = tOf(y, mo, 1); if (t > b) break; if (t >= a) out.push({ t, label: `${MON[mo]} ${yearLabel(y)}` }); }
+  } else {
+    const dt = dateOf(a);
+    for (; out.length < 300; dt.setUTCDate(dt.getUTCDate() + k)) { const t = tOf(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate()); if (t > b) break; if (t >= a) out.push({ t, label: `${dt.getUTCDate()} ${MON[dt.getUTCMonth()]} ${yearLabel(dt.getUTCFullYear())}` }); }
+  }
+  return out;
+}
+for (const n of nodes) {
+  n.t0 = parseT(n.start); n.t1 = n.end ? parseT(n.end) : n.t0;
+  if (n.t0 != null && (n.t1 == null || n.t1 < n.t0)) n.t1 = n.t0;
+}
+const dated = nodes.filter((n) => n.t0 != null);
+
+/* ----- which views exist ----- */
+const VIEW_LABEL = { graph: "Graph", timeline: "Timeline", read: "Read", outline: "Outline", list: "List" };
+const can = { graph: true, timeline: dated.length >= 5, read: (story.stories || []).length > 0, outline: true, list: true };
+let viewList = (Array.isArray(story.views) && story.views.length ? story.views : Object.keys(VIEW_LABEL)).filter((v) => can[v]);
+if (!viewList.length) viewList = ["graph"];
+
+/* ----- timeline ----- */
+const TL = { v0: 0, v1: 1, even: false, init: false, geo: null };
+function tlFull() {
+  let a = Infinity, b = -Infinity;
+  for (const n of dated) { a = Math.min(a, n.t0); b = Math.max(b, n.t1); }
+  const pad = Math.max((b - a) * 0.05, 2 / 365.25);
+  return [a - pad, b + pad];
+}
+function tlReset() { [TL.v0, TL.v1] = tlFull(); TL.even = false; }
+function tlZoom(f, mx) {
+  if (TL.even || !TL.geo) return;
+  const [fa, fb] = tlFull(), span = TL.v1 - TL.v0;
+  const ns = Math.min((fb - fa) * 1.5, Math.max(span * f, 2 / 365.25));
+  const fx = Math.min(1, Math.max(0, (mx - TL.geo.x0) / TL.geo.pw)), tc = TL.v0 + fx * span;
+  TL.v0 = tc - fx * ns; TL.v1 = TL.v0 + ns; renderTimeline();
+}
+function tlFocusStory(st) {
+  if (TL.even) return;
+  if (!TL.init) { tlReset(); TL.init = true; }
+  const ts = st.steps.map((id) => byId.get(id)).filter((n) => n && n.t0 != null);
+  if (ts.length < 2) return;
+  const a = Math.min(...ts.map((n) => n.t0)), b = Math.max(...ts.map((n) => n.t1)), pad = Math.max((b - a) * 0.14, 2 / 365.25);
+  TL.v0 = a - pad; TL.v1 = b + pad;
+}
+function ensureTL(n) {
+  if (S.view !== "timeline" || TL.even || n.t0 == null || !TL.geo) return;
+  const s = TL.v1 - TL.v0, covered = $("panel").classList.contains("open") && !isNarrow() ? Math.min(400, TL.geo.x0 + TL.geo.pw) : 0;
+  const free = Math.max(120, TL.geo.pw - covered), frac = (n.t0 - TL.v0) / s, hi = (free - 60) / TL.geo.pw;
+  if (frac < 0.04 || frac > hi) { const target = (free / 2) / TL.geo.pw; TL.v0 = n.t0 - target * s; TL.v1 = TL.v0 + s; } // centre it in the part the panel leaves free
+}
+function renderTimeline() {
+  const svg = $("tl"), host = $("timeline"), W = host.clientWidth, Hc = host.clientHeight;
+  if (!W || !Hc || !dated.length) return;
+  if (!TL.init) { tlReset(); TL.init = true; }
+  svg.textContent = "";
+  const narrow = W < 600, LW = narrow ? 0 : 150, x0 = LW + 14, x1 = W - 26, pw = Math.max(80, x1 - x0);
+  TL.geo = { x0, pw };
+  const lanes = story.clusters.filter((c) => dated.some((n) => n.cluster === c.id));
+  let X;
+  if (TL.even) {
+    const order = [...dated].sort((a, b) => a.t0 - b.t0 || a.t1 - b.t1), rank = new Map(order.map((n, i) => [n.id, i]));
+    X = (n) => x0 + 14 + (pw - 28) * (order.length > 1 ? rank.get(n.id) / (order.length - 1) : 0.5);
+  } else {
+    X = (n, end) => x0 + (((end ? n.t1 : n.t0) - TL.v0) / (TL.v1 - TL.v0)) * pw;
+  }
+  const AX = 40, rowH = TL.even ? 34 : 23, hh = narrow ? 16 : 0;
+  const sel = S.selected && byId.get(S.selected), nb = sel ? adj.get(sel.id) : null, inStory = S.story ? new Set(S.story.steps) : null;
+  let y = AX; const blocks = [];
+  for (const c of lanes) {
+    const items = dated.filter((n) => n.cluster === c.id).map((n) => ({ n, x: X(n), xe: TL.even ? X(n) : X(n, true) })).sort((a, b) => a.x - b.x);
+    const rows = [];
+    for (const it of items) {
+      if (it.x > x1 + 60 || it.xe < x0 - 60) { it.row = -1; continue; }
+      const lw = Math.min(230, it.n.title.length * 6.4 + 16);
+      it.flip = it.x + 16 + lw > x1;
+      const iv = it.flip ? [it.x - 12 - lw, Math.max(it.x, it.xe) + 6] : [it.x - 6, Math.max(it.x, it.xe) + 12 + lw];
+      let r = rows.findIndex((row) => row.every(([l, rr]) => iv[1] < l - 4 || iv[0] > rr + 4));
+      if (r < 0) { r = rows.length; rows.push([]); }
+      rows[r].push(iv); it.row = r;
+    }
+    const h = Math.max(58, Math.max(1, rows.length) * rowH + 30 + hh);
+    blocks.push({ c, items, top: y, h }); y += h;
+  }
+  const total = y + 14;
+  svg.setAttribute("width", W); const room = $("foot").offsetHeight + 28; // so the footer never covers the last lane
+  svg.setAttribute("height", Math.max(Hc, total + room));
+  const defs = sv("defs"), clip = sv("clipPath", { id: "tl-clip" });
+  clip.append(sv("rect", { x: x0 - 10, y: 0, width: pw + 20, height: Math.max(Hc, total + room) })); defs.append(clip); svg.append(defs);
+  blocks.forEach((b, i) => {
+    svg.append(sv("rect", { class: "tl-lane" + (i % 2 ? " alt" : ""), x: 0, y: b.top, width: W, height: b.h }));
+    const lab = sv("text", { class: "tl-lane-label", x: narrow ? x0 : 14, y: b.top + (narrow ? 12 : 24) });
+    lab.textContent = b.c.label; lab.setAttribute("fill", colors[b.c.id]); lab.style.fill = colors[b.c.id]; svg.append(lab);
+  });
+  const grid = sv("g", { "clip-path": "url(#tl-clip)" });
+  if (!TL.even) {
+    for (const k of makeTicks(TL.v0, TL.v1, Math.max(3, pw / 140))) {
+      const tx = x0 + ((k.t - TL.v0) / (TL.v1 - TL.v0)) * pw;
+      grid.append(sv("line", { class: "tl-tick", x1: tx, x2: tx, y1: AX - 6, y2: total }));
+      const t = sv("text", { class: "tl-tick-label", x: tx, y: AX - 14 }); t.textContent = k.label; grid.append(t);
+    }
+  } else {
+    const t = sv("text", { class: "tl-tick-label", x: x0, y: 22, "text-anchor": "start" }); t.textContent = "Events in order, evenly spaced (not to scale)"; grid.append(t);
+  }
+  svg.append(grid);
+  const layer = sv("g", { "clip-path": "url(#tl-clip)" });
+  for (const b of blocks) for (const it of b.items) {
+    if (it.row < 0) continue;
+    const n = it.n, cy = b.top + hh + 22 + it.row * rowH;
+    const dim = !matches(n) || (inStory ? !inStory.has(n.id) : (sel && n !== sel && !nb.has(n.id)));
+    const g = sv("g", { class: "tl-node" + (dim ? " dim" : "") + (n === sel ? " sel" : ""), tabindex: 0, role: "button", "data-id": n.id, "aria-label": `${n.title}, ${n.when || n.start}` });
+    const tt = sv("title"); tt.textContent = `${n.title}${n.when ? " (" + n.when + ")" : ""}`; g.append(tt);
+    if (!TL.even && it.xe - it.x > 3) g.append(sv("rect", { class: "tl-bar", x: it.x, y: cy - 3, width: it.xe - it.x, height: 6, rx: 3, fill: n.color }));
+    g.append(sv("circle", { class: "tl-dot", cx: it.x, cy, r: n.featured ? 7 : 5.5, fill: n.color }));
+    const tx = it.flip ? it.x - 12 : Math.max(it.x, it.xe) + 12;
+    const t = sv("text", { x: tx, y: cy + 4, "text-anchor": it.flip ? "end" : "start" }); t.textContent = n.title; g.append(t);
+    if (TL.even && n.when) { const w = sv("text", { class: "tl-when", x: tx, y: cy + 16, "text-anchor": it.flip ? "end" : "start" }); w.textContent = n.when; g.append(w); }
+    g.addEventListener("click", () => select(n.id));
+    g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(n.id); } });
+    layer.append(g);
+  }
+  svg.append(layer);
+  const undated = nodes.length - dated.length;
+  if (undated > 0) { const note = sv("text", { class: "tl-tick-label", x: 14, y: total + 12, "text-anchor": "start" }); note.textContent = `${undated} of ${nodes.length} nodes have no date, so they appear only in the other views.`; svg.append(note); }
+  $("tl-mode").textContent = TL.even ? "True scale" : "Even spacing";
+}
+(function timelineInput() {
+  const svg = $("tl"); let d = null; const pts = new Map(); let pinch = 0;
+  const pdist = () => { const [a, b] = [...pts.values()]; return Math.hypot(a.x - b.x, a.y - b.y) || 1; };
+  svg.addEventListener("wheel", (e) => { if (TL.even) return; e.preventDefault(); const r = svg.getBoundingClientRect(); tlZoom(Math.exp(e.deltaY * 0.0015), e.clientX - r.left); }, { passive: false });
+  svg.addEventListener("pointerdown", (e) => {
+    if (TL.even || e.button > 0) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pts.size === 2) { pinch = pdist(); d = null; return; }
+    d = { x: e.clientX, v0: TL.v0, v1: TL.v1, id: e.pointerId, moved: false };
+  });
+  svg.addEventListener("pointermove", (e) => {
+    if (pts.has(e.pointerId)) pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pts.size === 2 && pinch) {
+      const nd = pdist(), [a, b] = [...pts.values()], r = svg.getBoundingClientRect();
+      tlZoom(pinch / nd, (a.x + b.x) / 2 - r.left); pinch = nd; return;
+    }
+    if (!d || e.pointerId !== d.id || !TL.geo) return;
+    const dx = e.clientX - d.x;
+    if (!d.moved && Math.abs(dx) > 5) { d.moved = true; try { svg.setPointerCapture(e.pointerId); } catch {} svg.style.cursor = "grabbing"; }
+    if (d.moved) { const dt = -dx / TL.geo.pw * (d.v1 - d.v0); TL.v0 = d.v0 + dt; TL.v1 = d.v1 + dt; renderTimeline(); }
+  });
+  const end = (e) => { pts.delete(e.pointerId); if (pts.size < 2) pinch = 0; d = null; svg.style.cursor = ""; };
+  svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
+  $("tl-mode").onclick = () => { TL.even = !TL.even; if (!TL.even) tlReset(); renderTimeline(); };
+})();
+
+/* ----- read: guided stories as a narrative ----- */
+function showStep(sid, i) { setView("graph"); startStory(sid); goStep(i); }
+function renderRead() {
+  const box = $("read"); box.textContent = "";
+  const all = story.stories || []; if (!all.length) return;
+  const st = storyById.get(S.readStory) || all[0]; S.readStory = st.id;
+  const wrap = el("div", { class: "read-wrap" });
+  wrap.append(el("div", { class: "read-tabs" }, all.map((s) => el("button", { class: "chip", "aria-pressed": String(s.id === st.id), text: s.title, onclick: () => { S.readStory = s.id; renderRead(); box.scrollTop = 0; } }))));
+  wrap.append(el("h2", { class: "rt", text: st.title }));
+  if (st.summary) wrap.append(el("p", { class: "intro", text: st.summary }));
+  st.steps.forEach((id, i) => {
+    const n = byId.get(id), prev = i ? byId.get(st.steps[i - 1]) : null;
+    const e = prev ? edges.find((x) => (x.a === prev && x.b === n) || (x.a === n && x.b === prev)) : null;
+    const srcs = (n.sources || []).map((s) => srcById.get(s)).filter(Boolean);
+    wrap.append(el("section", { class: "rstep", style: `--c:${n.color}` },
+      el("span", { class: "rnum", text: String(i + 1) }),
+      e ? el("p", { class: "via" }, `${e.a.title} `, el("em", { text: `${e.label} →` }), ` ${e.b.title}`, e.kind === "inferred" ? " (inferred)" : "") : null,
+      el("h3", null, el("button", { text: n.title, onclick: () => select(n.id) })),
+      el("p", { class: "meta", text: [story.clusters[cIndex.get(n.cluster)].label, cap(n.type), n.when].filter(Boolean).join(" · ") }),
+      el("p", { text: n.summary }),
+      n.details ? el("p", { class: "details", text: n.details }) : null,
+      n.evidence ? el("blockquote", { text: n.evidence }) : null,
+      srcs.length ? el("p", { class: "rsrc" }, "Sources: ", srcs.flatMap((s, k) => { const u = safeUrl(s.url); return [k ? ", " : "", u ? el("a", { href: u, target: "_blank", rel: "noopener noreferrer", text: s.title }) : s.title]; })) : null,
+      el("p", null, el("button", { class: "chip", text: "Show on graph", onclick: () => showStep(st.id, i) }))));
+  });
+  box.append(wrap);
+}
+
+/* ----- outline: the graph as a collapsible tree from the root ----- */
+const tree = (() => {
+  const nbrs = new Map(nodes.map((n) => [n.id, []]));
+  for (const e of [...edges].sort((a, b) => (a.kind === "explicit" ? 0 : 1) - (b.kind === "explicit" ? 0 : 1))) { nbrs.get(e.source).push([e.target, e]); nbrs.get(e.target).push([e.source, e]); }
+  const parent = new Map([[story.root, null]]), kids = new Map(nodes.map((n) => [n.id, []])), q = [story.root];
+  while (q.length) { const id = q.shift(); for (const [o, e] of nbrs.get(id)) if (!parent.has(o)) { parent.set(o, { id, e }); kids.get(id).push(o); q.push(o); } }
+  const treeEdges = new Set([...parent.values()].filter(Boolean).map((p) => p.e));
+  return { parent, kids, treeEdges, orphans: nodes.filter((n) => !parent.has(n.id)) };
+})();
+S.open.add(story.root);
+function renderOutline() {
+  const box = $("outline"); box.textContent = "";
+  const wrap = el("div", { class: "ol-wrap" });
+  wrap.append(el("div", { class: "ol-tools" },
+    el("button", { class: "btn", text: "Expand all", onclick: () => { nodes.forEach((n) => S.open.add(n.id)); renderOutline(); } }),
+    el("button", { class: "btn", text: "Collapse all", onclick: () => { S.open.clear(); S.open.add(story.root); renderOutline(); } })));
+  const item = (n) => {
+    const kids = tree.kids.get(n.id), p = tree.parent.get(n.id), dim = !matches(n);
+    const head = [
+      el("i", { style: `--c:${n.color}` }),
+      p ? el("span", { class: "via", text: `${p.e.a.id === p.id ? "→" : "←"} ${p.e.label}` }) : null,
+      el("button", { class: "olt", text: n.title, onclick: (ev) => { ev.preventDefault(); ev.stopPropagation(); select(n.id); } }),
+      el("small", { text: [cap(n.type), n.when].filter(Boolean).join(" · ") }),
+    ];
+    const also = edges.filter((e) => (e.a === n || e.b === n) && !tree.treeEdges.has(e)).slice(0, 8);
+    const body = el("div", { class: "olbody" }, el("p", { text: n.summary }),
+      also.length ? el("p", null, "Also: ", also.flatMap((e, k) => { const o = e.a === n ? e.b : e.a; return [k ? "  ·  " : "", el("button", { class: "olink", text: `${e.a === n ? "→" : "←"} ${e.label} ${o.title}`, onclick: () => select(o.id) })]; })) : null);
+    if (!kids.length) return el("li", { class: dim ? "dim" : "" }, el("div", { class: "row" }, head), body);
+    return el("li", { class: dim ? "dim" : "" },
+      el("details", { open: S.open.has(n.id), ontoggle: (ev) => { if (ev.target.open) S.open.add(n.id); else S.open.delete(n.id); } },
+        el("summary", { class: "row" }, head, el("span", { class: "olcount", text: String(kids.length) })), body,
+        el("ul", null, kids.map((k) => item(byId.get(k))))));
+  };
+  wrap.append(el("ul", null, item(byId.get(story.root))));
+  if (tree.orphans.length) wrap.append(el("h3", { text: "Not connected to the root", style: "margin:24px 0 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)" }), el("ul", null, tree.orphans.map((n) => el("li", null, el("div", { class: "row" }, el("i", { style: `--c:${n.color}` }), el("button", { class: "olt", text: n.title, onclick: () => select(n.id) }), el("small", { text: cap(n.type) }))))));
+  box.append(wrap);
+}
+
+/* ----- switching ----- */
+function setView(v) {
+  if (!viewList.includes(v)) v = viewList[0];
+  const was = S.view; S.view = v;
+  for (const key of ["list", "timeline", "read", "outline"]) $(key).classList.toggle("on", v === key);
+  svgEl.style.visibility = v === "graph" ? "visible" : "hidden";
+  const spatial = v === "graph" || v === "timeline";
+  $("zoom").style.display = spatial ? "" : "none";
+  $("zoom").classList.toggle("right", v === "timeline");
+  $("btn-fit").style.display = spatial ? "" : "none";
+  $("chips").style.display = v === "read" ? "none" : "";
+  $("stories").style.display = spatial ? "" : "none";
+  if (!spatial && S.story) endStoryQuiet();
+  for (const b of $("views").children) b.setAttribute("aria-pressed", String(b.dataset.v === v));
+  if (v === "read") renderRead();
+  render();
+  if (v === "graph" && was !== "graph") requestAnimationFrame(() => { if (!touched) fit(false); });
+  if (v === "timeline") requestAnimationFrame(renderTimeline);
+}
+
+/* ---------- toolbar ---------- */
+const usedClusters = new Set(nodes.map((n) => n.cluster));
+$("chips").append(el("button", { class: "chip", "data-c": "all", text: "All", onclick: () => { S.filter = "all"; render(); } }));
+for (const c of story.clusters) if (usedClusters.has(c.id)) $("chips").append(el("button", { class: "chip", "data-c": c.id, style: `--c:${colors[c.id]}`, onclick: () => { S.filter = S.filter === c.id ? "all" : c.id; render(); } }, el("i"), c.label));
+if ((story.stories || []).length) {
+  $("stories").append(el("span", { text: "Follow a story" }));
+  for (const s of story.stories) $("stories").append(el("button", { class: "chip", "data-s": s.id, title: s.summary || "", text: s.title, onclick: () => (S.story && S.story.id === s.id ? endStory() : startStory(s.id)) }));
+}
+for (const c of story.clusters) if (usedClusters.has(c.id)) $("legend").append(el("span", { style: `--c:${colors[c.id]}` }, el("i"), c.label));
+$("legend").append(el("span", { title: "Relationship directly supported by a cited source" }, (() => { const s = sv("svg", { viewBox: "0 0 22 8" }); s.append(sv("line", { x1: 0, y1: 4, x2: 22, y2: 4, stroke: "currentColor", "stroke-width": 1.5 })); return s; })(), "sourced"));
+$("legend").append(el("span", { title: "Editorial bridge: an interpretation, not a direct claim" }, (() => { const s = sv("svg", { viewBox: "0 0 22 8" }); s.append(sv("line", { x1: 0, y1: 4, x2: 22, y2: 4, stroke: "currentColor", "stroke-width": 1.5, "stroke-dasharray": "3 4" })); return s; })(), "inferred"));
+
+$("views").append(...viewList.map((v) => el("button", { "data-v": v, "aria-pressed": "false", text: VIEW_LABEL[v], onclick: () => setView(v) })));
+if (viewList.length < 2) $("views").style.display = "none";
+$("q").addEventListener("input", (e) => { S.q = e.target.value.trim().toLowerCase(); render(); });
+$("btn-fit").onclick = () => { if (S.view === "timeline") { tlReset(); renderTimeline(); } else fit(); };
+$("btn-reset").onclick = () => { S.filter = "all"; S.q = ""; $("q").value = ""; endStoryQuiet(); tlReset(); layout(); place(); select(null); fit(); };
+/* Full screen: only offered where the browser supports it and the page is not embedded (an embedding page, like the product site, has its own button). */
+(() => {
+  const btn = $("btn-fs"), root = document.documentElement;
+  const request = root.requestFullscreen || root.webkitRequestFullscreen;
+  const isFs = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+  let embedded = false; try { embedded = window.self !== window.top; } catch { embedded = true; }
+  if (!request || document.fullscreenEnabled === false || embedded) return;
+  const sync = () => { btn.textContent = isFs() ? "Exit full screen" : "Full screen"; btn.setAttribute("aria-pressed", String(isFs())); };
+  const toggle = () => { if (isFs()) (document.exitFullscreen || document.webkitExitFullscreen).call(document); else { const r = request.call(root); if (r && r.catch) r.catch(() => {}); } };
+  btn.hidden = false; btn.onclick = toggle; sync();
+  document.addEventListener("fullscreenchange", sync); document.addEventListener("webkitfullscreenchange", sync);
+  addEventListener("keydown", (e) => { if ((e.key === "f" || e.key === "F") && !e.ctrlKey && !e.metaKey && !e.altKey && !/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) { e.preventDefault(); toggle(); } });
+})();
+$("zin").onclick = () => (S.view === "timeline" ? tlZoom(1 / 1.4, (TL.geo ? TL.geo.x0 + TL.geo.pw / 2 : 0)) : zoomAt(1.3, svgEl.clientWidth / 2, svgEl.clientHeight / 2));
+$("zout").onclick = () => (S.view === "timeline" ? tlZoom(1.4, (TL.geo ? TL.geo.x0 + TL.geo.pw / 2 : 0)) : zoomAt(1 / 1.3, svgEl.clientWidth / 2, svgEl.clientHeight / 2));
+$("sb-prev").onclick = () => goStep(S.step - 1); $("sb-next").onclick = () => goStep(S.step + 1); $("sb-exit").onclick = endStory;
+addEventListener("keydown", (e) => {
+  const typing = e.target.tagName === "INPUT";
+  if (e.key === "/" && !typing) { e.preventDefault(); $("q").focus(); }
+  else if (e.key === "Escape") { if (typing) e.target.blur(); else if (S.selected) select(null); else if (S.story) endStory(); }
+  else if (S.story && !typing && e.key === "ArrowRight") goStep(S.step + 1);
+  else if (S.story && !typing && e.key === "ArrowLeft") goStep(S.step - 1);
+});
+
+/* ---------- pointer interaction: pan, zoom, pinch, drag nodes ---------- */
+const ptrs = new Map(); let drag = null;
+const toWorld = (cx, cy) => { const r = svgEl.getBoundingClientRect(); return [(cx - r.left - view.x) / view.k, (cy - r.top - view.y) / view.k]; };
+const pinchInfo = () => { const [a, b] = [...ptrs.values()]; return { d: Math.hypot(a.x - b.x, a.y - b.y), mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2 }; };
+svgEl.addEventListener("pointerdown", (e) => {
+  cancelAnimationFrame(tweenId);
+  svgEl.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (ptrs.size === 2) { drag = { type: "pinch", ...pinchInfo() }; return; }
+  const g = e.target.closest && e.target.closest(".node");
+  drag = g ? { type: "node", n: byId.get(g.dataset.id), sx: e.clientX, sy: e.clientY, moved: false }
+           : { type: "pan", sx: e.clientX, sy: e.clientY, vx: view.x, vy: view.y, moved: false };
+});
+svgEl.addEventListener("pointermove", (e) => {
+  if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (!drag) return;
+  if (drag.type === "pinch" && ptrs.size === 2) {
+    const p = pinchInfo(), r = svgEl.getBoundingClientRect();
+    zoomAt(p.d / drag.d, p.mx - r.left, p.my - r.top); view.x += p.mx - drag.mx; view.y += p.my - drag.my; applyView(); drag = { type: "pinch", ...p }; return;
+  }
+  const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+  if (!drag.moved && Math.hypot(dx, dy) > 4) { drag.moved = true; svgEl.classList.add("dragging"); }
+  if (!drag.moved) return;
+  if (drag.type === "pan") { view.x = drag.vx + dx; view.y = drag.vy + dy; applyView(); }
+  else if (drag.type === "node") { const [wx, wy] = toWorld(e.clientX, e.clientY); drag.n.x = wx; drag.n.y = wy; place(); }
+});
+const endPtr = (e) => {
+  ptrs.delete(e.pointerId); svgEl.classList.remove("dragging");
+  if (drag && drag.type !== "pinch" && !drag.moved) { if (drag.type === "node") select(drag.n.id, { center: false }); else if (S.selected && !S.story) select(null); }
+  if (ptrs.size < 2) drag = null;
+};
+svgEl.addEventListener("pointerup", endPtr); svgEl.addEventListener("pointercancel", endPtr);
+svgEl.addEventListener("wheel", (e) => { e.preventDefault(); const r = svgEl.getBoundingClientRect(); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)), e.clientX - r.left, e.clientY - r.top); }, { passive: false });
+let sized = svgEl.clientWidth > 0 && svgEl.clientHeight > 0, touched = false;
+svgEl.addEventListener("pointerdown", () => { touched = true; }); svgEl.addEventListener("wheel", () => { touched = true; }, { passive: true });
+const onSize = () => {
+  if (S.view === "timeline") { renderTimeline(); return; }
+  if (S.view !== "graph" || !svgEl.clientWidth || !svgEl.clientHeight) return;
+  if (!sized) { sized = true; layout(); place(); fit(false); return; } // first real size (page was loaded hidden / zero-sized)
+  if (!touched && !S.selected && !S.story) fit(false);
+};
+if (window.ResizeObserver) { new ResizeObserver(onSize).observe(svgEl); new ResizeObserver(() => { if (S.view === "timeline") renderTimeline(); }).observe($("timeline")); } else addEventListener("resize", onSize);
+
+/* ---------- boot ---------- */
+layout(); place(); setView(viewList.includes(story.defaultView) ? story.defaultView : "graph"); fit(false);
+function fromHash() {
+  const p = new URLSearchParams(location.hash.replace(/^#/, ""));
+  if (p.has("view") && S.view !== p.get("view")) setView(p.get("view"));
+  if (p.has("story") && storyById.has(p.get("story")) && !(S.story && S.story.id === p.get("story"))) startStory(p.get("story"));
+  else if (p.has("node") && byId.has(p.get("node")) && S.selected !== p.get("node")) select(p.get("node"), { center: true });
+}
+addEventListener("hashchange", fromHash);
+fromHash();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Ground News — Independent Evidence Ledger (subagent research, 2026-11-13)
+# Source: independent sources only, ground.news NOT visited by this line. Full detail in chat handoff 2026-11-13 11:12 EST.
+
+## Headlines
+1. Factuality cannot be a 3-rater average — AllSides by its own statement does NOT rate accuracy. Factuality comes from 2 raters (Ad Fontes + MBFC); bias from 3.
+   - AllSides: "We don't rate accuracy or credibility" / "AllSides does not rate outlets based on accuracy. We rate perspective only." https://www.allsides.com/media-bias/media-bias-chart
+   - Ad Fontes: rates reliability (0-64) and bias (-42 to +42) https://adfontesmedia.com/methodology/
+   - MBFC: rates bias (-10 to +10, US-centric) and Factual Reporting (Very High to Very Low) https://mediabiasfactcheck.com/methodology/
+   - CJR confirms split: https://www.cjr.org/analysis/the-business-of-balance-ground-news.php
+2. Founding drift: 2014 (Snapwise incorporation 2014-03-26, ISED corp 883500-4 https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=8835004 ) / 2017 (company-claimed formation, UWaterloo, Apple Spotlight) / 2018 (USPTO first use 31 Mar 2018, app release 22 Apr 2018) / 2020 (Ground News Pro launch 15 Jan 2020). No "founded 2019" source found.
+3. NASA claim: Self-reported only. No nasa.gov / APL / university primary record naming Harleen Kaur found. APL New Horizons team page does not list her (not dispositive — 2005 intern). Story Exchange 2017 is earliest chain link. Drift: SignalHire LinkedIn scrape shows NASA Jan 2005-Jan 2005 (1 month). "First Sikh woman engineer at NASA" NOT found for her — that viral claim belongs to Jasleen Kaur Josan, debunked. Rolls-Royce "youngest/first female VP" also self-reported only.
+4. Funding: $1.01M is PitchBook-only. CB Insights $340K, BounceWatch $170K, Tracxn $20K — databases contradict each other and conflate uCiC/Snapwise predecessor raises. PitchBook lists Later Stage VC 15 May 2025 (Velocity, undisclosed amount per Silverwood) — so $1.01M cannot be a current frozen total. Named institutional/VC investors corroborated by >=2 databases: Techstars/Techstars Ventures, Right Side Capital Management (self-describes as "frequently the first institutional investor"), Something Good Ventures, 37 Angels, Velocity, Blue Lagoon Capital. => Ground's "no institutional investors / small group of individual investors" formulation is Contradicted in ordinary usage; big-tech/media/government investor NOT found.
+   - Board note: director Manuel Mattke is employee of Joe Ricketts (Opportunity Education / FactualIQ / Straight Arrow News) — board fact partially corroborated; inference Ricketts funds Ground is UNVERIFIED.
+5. App scale: Google Play 1M+ downloads bracket CONFIRMED (primary listing, Snapwise Inc. dba Ground News, 4.55, ~33k ratings). iOS 4.7 / 49K ratings US confirmed; Apple publishes no download count, precise totals unverifiable. Crossing 1M+ date drifts Jun vs Oct 2024 in trackers.
+6. Legal entity CONFIRMED: Snapwise Inc., federal corporation 2014, Kitchener, directors incl Harleen Kaur Jolly, Sukhsagar Singh Jolly. USPTO GROUND NEWS Reg 6794233 owner Snapwise. Signed school-district contract "Snapwise, Inc., dba Ground News", signed Sukh Singh CTO 2024.
+7. CJR "Business of Balance" (Sep 2025) — highest-weight critique: raters measure bias differently; AllSides COO/CFO told CJR Ground uses AllSides ratings without "formal permission" and without compensation; MBFC founder said no agreement; Ad Fontes CEO said Ground pays Ad Fontes; Ground declined to comment.
+8. Blindspot peer review: Bram, PLOS ONE 2024, n>1200 subscribers, 3 of 4 stories did NOT change minds; 1 reduced polarization. Author worked with Ground to implement experiment (disclosed, no compensation).
+9. YouTube: Confirmed qualified — Gospel Stats H1 2025, #1 by integrations (1,863, with 1,862 variant in same firm's later release) and views (664M), sample = English channels, videos >=25k views in 7 days. NOT proven: #1 full year, #1 by spend, all YouTube incl Shorts/non-English. All reports derive from same dataset = one source.
+10. Malone "Factuality Scam" (22 Aug 2026): publication-level score displayed beside individual articles as "Factuality"; quotes Ground methodology: "Scores apply to each publication as a whole, not to their individual articles." Advocacy source; its Ad Fontes stats are preliminary/ChatGPT-assisted, no dataset.
+11. MBFC rigor critique: arXiv 2607.12108 (2026) MBFC "does not meet basic standards of rigor"; ACRLog on Ad Fontes chart false equivalency / lionizes center.
+
+## Open items pending primary capture (browser line)
+- Ground's verbatim methodology/FAQ wording on bias/factuality split and funding — needed to decide if Ground itself is accurate (2-rater factuality) vs marketing surfaces implying 3.
+- Ground's verbatim scale claims, slogan, Blindspot definition, ownership research claim, no-algorithm claim.
